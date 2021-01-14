@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.2.30/dist/vuetify.min.css" rel="stylesheet">
     
-<link rel="stylesheet" href="/clindy/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
     
     
@@ -64,20 +64,20 @@
                     <v-row>
                         <v-col cols="2" class="d-none d-md-block">
                             <div id="sidebar" class="float-right">
-    <a href="/clindy/" rel="home">
+    <a href="/" rel="home">
         <v-avatar size=96>
             <img id="logo" src="/clindy/img/head.jpg">     
         </v-avatar> 
     </a>
     <v-divider></v-divider>
     <div class="mini-menu">
-        <v-btn icon href="/clindy/">
+        <v-btn icon href="/">
             <v-icon>home</v-icon>
         </v-btn>
-        <v-btn icon href="/clindy/categories/">
+        <v-btn icon href="/categories/">
             <v-icon>folder</v-icon>
         </v-btn>
-        <v-btn icon href="/clindy/tags/">
+        <v-btn icon href="/tags/">
             <v-icon>bookmark</v-icon>
         </v-btn>
         <v-btn icon @click="SetNightMode">
@@ -87,18 +87,10 @@
     <v-list id="main-menu" class="font-weight-bold" flat>
         
             
-            <v-list-item href="/clindy/archives/" link>
+            <v-list-item href="/archives/" link>
             <v-list-item-icon><v-icon>archive</v-icon></v-list-item-icon>
             <v-list-item-content>
-                Archives
-            </v-list-item-content>
-            </v-list-item>
-        
-            
-            <v-list-item href="/clindy/about/" link>
-            <v-list-item-icon><v-icon>account_circle</v-icon></v-list-item-icon>
-            <v-list-item-content>
-                About
+                归档
             </v-list-item-content>
             </v-list-item>
         
@@ -108,7 +100,7 @@
         <v-list id="sub-menu" class="font-weight-medium" dense>
             
                 
-                    <v-list-item href="/clindy/categories/Game/" link>
+                    <v-list-item href="/categories/Game/" link>
                         <v-badge :value="menuHover" transition="slide-y-transition" inline content="7" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
@@ -120,7 +112,7 @@
                 
             
                 
-                    <v-list-item href="/clindy/categories/CVE/" link>
+                    <v-list-item href="/categories/CVE/" link>
                         <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
@@ -132,7 +124,7 @@
                 
             
                 
-                    <v-list-item href="/clindy/categories/Analysis/" link>
+                    <v-list-item href="/categories/Analysis/" link>
                         <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
@@ -150,23 +142,23 @@
         <div class="footer-social">
             
                 
-                <v-btn icon href="mailto:kb1000fx@gmail.com" target="_blank">
+                <v-btn icon href="mailto:clindy.h@qq.com" target="_blank">
                     <v-icon>fas fa-envelope</v-icon>
                 </v-btn>
             
                 
-                <v-btn icon href="https://github.com/kb1000fx" target="_blank">
+                <v-btn icon href="https://github.com/" target="_blank">
                     <v-icon>fab fa-github</v-icon>
                 </v-btn>
             
                 
-                <v-btn icon href="https://steamcommunity.com/profiles/76561198346798163" target="_blank">
-                    <v-icon>fab fa-steam</v-icon>
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-weibo</v-icon>
                 </v-btn>
             
                 
-                <v-btn icon href="https://weibo.com/kb1000fx" target="_blank">
-                    <v-icon>fab fa-weibo</v-icon>
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-qq</v-icon>
                 </v-btn>
             
         </div>
@@ -174,14 +166,14 @@
         <div class="footer-content">
             
                 <span id="busuanzi_container_site_uv" style="display: none;"> 
-                    Total Visitors <span id="busuanzi_value_site_uv"></span>
+                    总访客量 <span id="busuanzi_value_site_uv"></span>
                 </span>
                 <br>
             
             <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a></span><br>
             <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
             <span>
-                &copy; 2015 - 2021 
+                &copy; 2020 - 2021 
                 Clindy
             </span>
         </div>
@@ -194,9 +186,9 @@
   <v-col cols="12" md="8" align-self="end">
     <div id="site-header">
       <div id="site-title">
-        <a href="/clindy/" rel="home">Clindy&#39;s Blog</a>
+        <a href="/" rel="home">Clindy&#39;s Blog</a>
       </div>
-      <div id="site-description">———— 一朵追风的云</div>
+      <div id="site-description">像风走了八千里，不问归期</div>
       <div id="mobile-menu" class="d-block d-md-none">
         <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-inner-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
         <div class="mobile-mini-menu">
@@ -214,13 +206,8 @@
           </v-btn>
           
             
-            <v-btn icon href="/clindy/archives/">
+            <v-btn icon href="/archives/">
               <v-icon>archive</v-icon>
-            </v-btn>
-          
-            
-            <v-btn icon href="/clindy/about/">
-              <v-icon>account_circle</v-icon>
             </v-btn>
           
         </div>
@@ -252,7 +239,7 @@
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/Analysis/ >Analysis</a>
+                    <a rel="tag" href = /tags/Analysis/ >Analysis</a>
                   </span>
                 
               </v-card>
@@ -261,10 +248,10 @@
         </v-row>
         <span>
           
-            <a class="index-article-header-category font-weight-bold" href="/clindy/categories/Analysis/">Analysis></a>
+            <a class="index-article-header-category font-weight-bold" href="/categories/Analysis/">Analysis></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/clindy/2021/01/14/%E6%B5%81%E5%88%86%E6%9E%90/">流分析</a>
+        <a class="index-article-header-title font-weight-medium" href="/2021/01/14/%E6%B5%81%E5%88%86%E6%9E%90/">流分析</a>
       </div>
       
       <div class="index-article-content">
@@ -274,7 +261,7 @@
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/clindy/2021/01/14/%E6%B5%81%E5%88%86%E6%9E%90/">Read More</v-btn>
+        <v-btn text href="/2021/01/14/%E6%B5%81%E5%88%86%E6%9E%90/">阅读更多</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -295,12 +282,12 @@
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/pwn/ >pwn</a>
+                    <a rel="tag" href = /tags/pwn/ >pwn</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/CVE/ >CVE</a>
+                    <a rel="tag" href = /tags/CVE/ >CVE</a>
                   </span>
                 
               </v-card>
@@ -309,10 +296,10 @@
         </v-row>
         <span>
           
-            <a class="index-article-header-category font-weight-bold" href="/clindy/categories/CVE/">CVE></a>
+            <a class="index-article-header-category font-weight-bold" href="/categories/CVE/">CVE></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/clindy/2021/01/14/CVE-2018-1160/">CVE-2018-1160</a>
+        <a class="index-article-header-title font-weight-medium" href="/2021/01/14/CVE-2018-1160/">CVE-2018-1160</a>
       </div>
       
       <div class="index-article-content">
@@ -323,7 +310,7 @@
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/clindy/2021/01/14/CVE-2018-1160/">Read More</v-btn>
+        <v-btn text href="/2021/01/14/CVE-2018-1160/">阅读更多</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -344,17 +331,17 @@
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/CTF/ >CTF</a>
+                    <a rel="tag" href = /tags/CTF/ >CTF</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/pwn/ >pwn</a>
+                    <a rel="tag" href = /tags/pwn/ >pwn</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/Game/ >Game</a>
+                    <a rel="tag" href = /tags/Game/ >Game</a>
                   </span>
                 
               </v-card>
@@ -363,23 +350,22 @@
         </v-row>
         <span>
           
-            <a class="index-article-header-category font-weight-bold" href="/clindy/categories/Game/">Game></a>
+            <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/clindy/2021/01/11/%E5%8D%8E%E4%B8%BA%E4%BA%91pwn/">XCTF 华为三场</a>
+        <a class="index-article-header-title font-weight-medium" href="/2021/01/11/%E5%8D%8E%E4%B8%BA%E4%BA%91pwn/">XCTF 华为三场</a>
       </div>
       
       <div class="index-article-content">
         
           华为云专场太难了。
 cpp2.31保护全开的菜单堆。有两个功能，0是add，申请大小为0x8的堆块，并往索引处写入值，如果索引处有堆块，则会把原来的堆块会被free掉；1是delelte，free掉索引处的堆块，后打印堆块的值，最后可以往堆块里写东西。
-可以利用选项1，free后泄露堆块地址。之后利用free后可以改fd的指针的功能，把堆块add到其它堆块的SIZE位，将其改成0x200，add的索引就选择要覆盖的堆块的索引，让该堆块主动进入tcache。重复7次填满tcache，再释放unsorted bin泄露出libc，最后改freehook为system。
-12345678910...
+可以利用选项1，free后泄露堆块地址。之后利用free后可以改fd的指针的功能，把堆块add到其它堆块的SIZE位，将其改成0x200，a...
         
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/clindy/2021/01/11/%E5%8D%8E%E4%B8%BA%E4%BA%91pwn/">Read More</v-btn>
+        <v-btn text href="/2021/01/11/%E5%8D%8E%E4%B8%BA%E4%BA%91pwn/">阅读更多</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -400,17 +386,17 @@ cpp2.31保护全开的菜单堆。有两个功能，0是add，申请大小为0x8
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/CTF/ >CTF</a>
+                    <a rel="tag" href = /tags/CTF/ >CTF</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/pwn/ >pwn</a>
+                    <a rel="tag" href = /tags/pwn/ >pwn</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/Game/ >Game</a>
+                    <a rel="tag" href = /tags/Game/ >Game</a>
                   </span>
                 
               </v-card>
@@ -419,22 +405,22 @@ cpp2.31保护全开的菜单堆。有两个功能，0是add，申请大小为0x8
         </v-row>
         <span>
           
-            <a class="index-article-header-category font-weight-bold" href="/clindy/categories/Game/">Game></a>
+            <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/clindy/2020/12/30/2020%20%E7%BA%B5%E6%A8%AA%E6%9D%AF/">2020 纵横杯</a>
+        <a class="index-article-header-title font-weight-medium" href="/2020/12/30/2020%20%E7%BA%B5%E6%A8%AA%E6%9D%AF/">2020 纵横杯</a>
       </div>
       
       <div class="index-article-content">
         
           纵横杯题目难度适中吧，就是时间太紧了，一个人有点hold不住。
 wind_farm_panel2.23的库，无free，超长堆溢出，可以直接house of orange。
-12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667from pwn import *context.log_level = &quot;debug&quot;context.terminal = [&quot;open-...
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596...
         
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/clindy/2020/12/30/2020%20%E7%BA%B5%E6%A8%AA%E6%9D%AF/">Read More</v-btn>
+        <v-btn text href="/2020/12/30/2020%20%E7%BA%B5%E6%A8%AA%E6%9D%AF/">阅读更多</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -455,17 +441,17 @@ wind_farm_panel2.23的库，无free，超长堆溢出，可以直接house of ora
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/CTF/ >CTF</a>
+                    <a rel="tag" href = /tags/CTF/ >CTF</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/pwn/ >pwn</a>
+                    <a rel="tag" href = /tags/pwn/ >pwn</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/Game/ >Game</a>
+                    <a rel="tag" href = /tags/Game/ >Game</a>
                   </span>
                 
               </v-card>
@@ -474,25 +460,22 @@ wind_farm_panel2.23的库，无free，超长堆溢出，可以直接house of ora
         </v-row>
         <span>
           
-            <a class="index-article-header-category font-weight-bold" href="/clindy/categories/Game/">Game></a>
+            <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/clindy/2020/11/22/%E7%A5%A5%E4%BA%91%E6%9D%AF/">2020 祥云杯</a>
+        <a class="index-article-header-title font-weight-medium" href="/2020/11/22/%E7%A5%A5%E4%BA%91%E6%9D%AF/">2020 祥云杯</a>
       </div>
       
       <div class="index-article-content">
         
           祥云杯chang_chun_is_beautiful没给库，猜测是2.27版本，踩坑后发现是2.29+的版本。
 64位小端，保护机制全开。
-程序分析开始运行时会进行初始化，mmap一块内存，在调用urandom库，给mmap的前8字节加上随机数。之后读取flag.txt，把flag存在随机数后面。mmap的地址和flag的长度会在开始时作为gift泄露给我们。还有一个后门函数，运行函数的话，程序会比较我们申请的堆块的内容是否和生成的随机数的值相等，如果相等，则打印出flag。
-进入到main函数，有6个选项，分别是：
-1.add
-用calloc申请堆块，意味着无法用add操作从tcach...
+程序分析开始运行时会进行初始化，mmap一块内存，在调用urandom库，给mmap的前8字节加上随机数。之后读取flag.txt，把flag存在随机数后面。mmap的地址和flag的长度会在开始时作为gift泄露给我们。还有一个后门函数，运行函数的话，...
         
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/clindy/2020/11/22/%E7%A5%A5%E4%BA%91%E6%9D%AF/">Read More</v-btn>
+        <v-btn text href="/2020/11/22/%E7%A5%A5%E4%BA%91%E6%9D%AF/">阅读更多</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -513,17 +496,17 @@ wind_farm_panel2.23的库，无free，超长堆溢出，可以直接house of ora
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/CTF/ >CTF</a>
+                    <a rel="tag" href = /tags/CTF/ >CTF</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/pwn/ >pwn</a>
+                    <a rel="tag" href = /tags/pwn/ >pwn</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/Game/ >Game</a>
+                    <a rel="tag" href = /tags/Game/ >Game</a>
                   </span>
                 
               </v-card>
@@ -532,10 +515,10 @@ wind_farm_panel2.23的库，无free，超长堆溢出，可以直接house of ora
         </v-row>
         <span>
           
-            <a class="index-article-header-category font-weight-bold" href="/clindy/categories/Game/">Game></a>
+            <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/clindy/2020/11/14/2020%20%E4%B8%8A%E6%B5%B7%E8%B5%9B/">2020 上海赛</a>
+        <a class="index-article-header-title font-weight-medium" href="/2020/11/14/2020%20%E4%B8%8A%E6%B5%B7%E8%B5%9B/">2020 上海赛</a>
       </div>
       
       <div class="index-article-content">
@@ -548,15 +531,12 @@ add
 delete
 输入idx，free掉相应内存。size数组仍然保留数字。
 show
-假的，这题没有直接输出点，需要爆破stdout。
-edit
-输入idx，可以往堆里写东西，这里有off-by-one漏洞
-攻击思路有off-by-one，堆块大小任意选，且没开PIE，可以非常容易地构造重叠堆块，实现...
+假的，这题没有直...
         
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/clindy/2020/11/14/2020%20%E4%B8%8A%E6%B5%B7%E8%B5%9B/">Read More</v-btn>
+        <v-btn text href="/2020/11/14/2020%20%E4%B8%8A%E6%B5%B7%E8%B5%9B/">阅读更多</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -577,17 +557,17 @@ edit
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/CTF/ >CTF</a>
+                    <a rel="tag" href = /tags/CTF/ >CTF</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/pwn/ >pwn</a>
+                    <a rel="tag" href = /tags/pwn/ >pwn</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/Game/ >Game</a>
+                    <a rel="tag" href = /tags/Game/ >Game</a>
                   </span>
                 
               </v-card>
@@ -596,10 +576,10 @@ edit
         </v-row>
         <span>
           
-            <a class="index-article-header-category font-weight-bold" href="/clindy/categories/Game/">Game></a>
+            <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/clindy/2020/11/03/%E6%B9%96%E6%B9%98%E6%9D%AF/">2020 湖湘杯</a>
+        <a class="index-article-header-title font-weight-medium" href="/2020/11/03/%E6%B9%96%E6%B9%98%E6%9D%AF/">2020 湖湘杯</a>
       </div>
       
       <div class="index-article-content">
@@ -612,15 +592,12 @@ edit
 
 最下面的sub_40076c内部有一个栈溢出：
 
-这题给我的感觉，更像道逆向题，因为两个漏洞已经直接给我们了，保护机制也都没有开。但出题人利用格式化字符串的机制构建了一套自己的逻辑体系，解题时需要花费大量时间搞清楚程序的执行逻辑，只有弄明白前面一大段代码实现了什么功能（就是在逆向），才能利用已知漏洞拿到shell。
-内存布局寄存器和栈运行一下程序试试，程序会从我们的输入中读取16个数，然后做一个判断，最后提示失败，和静态分析效果一致。
-
-尝试用gdb运...
+这题给我的感觉，更像道逆向题，因为两个漏洞已经直接给我们了，保护机制也都没有开。但出题人利用格式化字符串的机制构建了一套自己的逻辑体系，解题时需要花费大量时间搞清楚程序的执行逻辑，只有弄明白前面一大段代码实...
         
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/clindy/2020/11/03/%E6%B9%96%E6%B9%98%E6%9D%AF/">Read More</v-btn>
+        <v-btn text href="/2020/11/03/%E6%B9%96%E6%B9%98%E6%9D%AF/">阅读更多</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -641,17 +618,17 @@ edit
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/CTF/ >CTF</a>
+                    <a rel="tag" href = /tags/CTF/ >CTF</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/pwn/ >pwn</a>
+                    <a rel="tag" href = /tags/pwn/ >pwn</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/Game/ >Game</a>
+                    <a rel="tag" href = /tags/Game/ >Game</a>
                   </span>
                 
               </v-card>
@@ -660,10 +637,10 @@ edit
         </v-row>
         <span>
           
-            <a class="index-article-header-category font-weight-bold" href="/clindy/categories/Game/">Game></a>
+            <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/clindy/2020/10/25/bytectf/">2020 ByteCTF</a>
+        <a class="index-article-header-title font-weight-medium" href="/2020/10/25/bytectf/">2020 ByteCTF</a>
       </div>
       
       <div class="index-article-content">
@@ -673,14 +650,12 @@ gun保护机制全开，符号表损失，逆向难度增大，需要动态调�
 有沙箱，只能orw。
 libc版本：2.31-0ubuntu9.1_amd64
 程序分析程序一开始会先让我们输name，共0x18字节，存在bss段中，之后会进入菜单。
-堆块的索引在全局变量上，由一个结构体数组保存着。结构体（之后统称子弹）的成员分别是：指向堆块的指针，指向结构体的指针，flag标志位。
-1.shoot
-输入射出子弹的个数，把load中的子弹射出去（把子弹对应的堆块free掉），期间打印该子弹对应堆块的字符串。射出一颗子弹，会把下一课子弹装入全局变量4050继续设再射，射出后f...
+堆块的索引在全局变量上，由一个结构体数组保存着。结构体（之后统称子弹）的成员分别是：指向堆块的指针，指向结构体的指针，flag标...
         
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/clindy/2020/10/25/bytectf/">Read More</v-btn>
+        <v-btn text href="/2020/10/25/bytectf/">阅读更多</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -701,17 +676,17 @@ libc版本：2.31-0ubuntu9.1_amd64
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/CTF/ >CTF</a>
+                    <a rel="tag" href = /tags/CTF/ >CTF</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/pwn/ >pwn</a>
+                    <a rel="tag" href = /tags/pwn/ >pwn</a>
                   </span>
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /clindy/tags/Game/ >Game</a>
+                    <a rel="tag" href = /tags/Game/ >Game</a>
                   </span>
                 
               </v-card>
@@ -720,10 +695,10 @@ libc版本：2.31-0ubuntu9.1_amd64
         </v-row>
         <span>
           
-            <a class="index-article-header-category font-weight-bold" href="/clindy/categories/Game/">Game></a>
+            <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/clindy/2020/10/11/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/">2020 西湖论剑</a>
+        <a class="index-article-header-title font-weight-medium" href="/2020/10/11/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/">2020 西湖论剑</a>
       </div>
       
       <div class="index-article-content">
@@ -736,16 +711,12 @@ libc-2.23
 之后会列出一个菜单，1选项没什么用，进入2后又有一个菜单，主要操作都集中在这里：
 
 1 会malloc大小为0x68的堆，存在指定的全局指针数组中。
-2 会将指定的堆free掉，有uaf漏洞。
-3 可以编辑ebp-0x20处一块内存，并拥有打印功能，可以以此来泄露canary，配合double free伪造堆块
-4 退出当前循环，可以触发ROP
-
 ...
         
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/clindy/2020/10/11/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/">Read More</v-btn>
+        <v-btn text href="/2020/10/11/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/">阅读更多</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -757,7 +728,7 @@ libc-2.23
                                 <v-divider></v-divider>
                                 <div id="mobile-footer-content">
                                     <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a> &nbsp; Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
-                                    <span> &copy; 2015 - 2021 Clindy</span>
+                                    <span> &copy; 2020 - 2021 Clindy</span>
                                 </div>
                             </div>                   
                         </v-col>                                            
@@ -772,7 +743,7 @@ libc-2.23
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-base64@3.5.2/base64.min.js"></script>
 
-<script src="/clindy/js/main.js"></script>
+<script src="/js/main.js"></script>
 
 
 

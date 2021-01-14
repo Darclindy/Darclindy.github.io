@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.2.30/dist/vuetify.min.css" rel="stylesheet">
     
-<link rel="stylesheet" href="/clindy/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
     
     
@@ -56,20 +56,20 @@
                     <v-row>
                         <v-col cols="2" class="d-none d-md-block">
                             <div id="sidebar" class="float-right">
-    <a href="/clindy/" rel="home">
+    <a href="/" rel="home">
         <v-avatar size=96>
             <img id="logo" src="/clindy/img/head.jpg">     
         </v-avatar> 
     </a>
     <v-divider></v-divider>
     <div class="mini-menu">
-        <v-btn icon href="/clindy/">
+        <v-btn icon href="/">
             <v-icon>home</v-icon>
         </v-btn>
-        <v-btn icon href="/clindy/categories/">
+        <v-btn icon href="/categories/">
             <v-icon>folder</v-icon>
         </v-btn>
-        <v-btn icon href="/clindy/tags/">
+        <v-btn icon href="/tags/">
             <v-icon>bookmark</v-icon>
         </v-btn>
         <v-btn icon @click="SetNightMode">
@@ -79,18 +79,10 @@
     <v-list id="main-menu" class="font-weight-bold" flat>
         
             
-            <v-list-item href="/clindy/archives/" link>
+            <v-list-item href="/archives/" link>
             <v-list-item-icon><v-icon>archive</v-icon></v-list-item-icon>
             <v-list-item-content>
-                Archives
-            </v-list-item-content>
-            </v-list-item>
-        
-            
-            <v-list-item href="/clindy/about/" link>
-            <v-list-item-icon><v-icon>account_circle</v-icon></v-list-item-icon>
-            <v-list-item-content>
-                About
+                归档
             </v-list-item-content>
             </v-list-item>
         
@@ -100,7 +92,7 @@
         <v-list id="sub-menu" class="font-weight-medium" dense>
             
                 
-                    <v-list-item href="/clindy/categories/Game/" link>
+                    <v-list-item href="/categories/Game/" link>
                         <v-badge :value="menuHover" transition="slide-y-transition" inline content="7" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
@@ -112,7 +104,7 @@
                 
             
                 
-                    <v-list-item href="/clindy/categories/CVE/" link>
+                    <v-list-item href="/categories/CVE/" link>
                         <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
@@ -124,7 +116,7 @@
                 
             
                 
-                    <v-list-item href="/clindy/categories/Analysis/" link>
+                    <v-list-item href="/categories/Analysis/" link>
                         <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
@@ -142,23 +134,23 @@
         <div class="footer-social">
             
                 
-                <v-btn icon href="mailto:kb1000fx@gmail.com" target="_blank">
+                <v-btn icon href="mailto:clindy.h@qq.com" target="_blank">
                     <v-icon>fas fa-envelope</v-icon>
                 </v-btn>
             
                 
-                <v-btn icon href="https://github.com/kb1000fx" target="_blank">
+                <v-btn icon href="https://github.com/" target="_blank">
                     <v-icon>fab fa-github</v-icon>
                 </v-btn>
             
                 
-                <v-btn icon href="https://steamcommunity.com/profiles/76561198346798163" target="_blank">
-                    <v-icon>fab fa-steam</v-icon>
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-weibo</v-icon>
                 </v-btn>
             
                 
-                <v-btn icon href="https://weibo.com/kb1000fx" target="_blank">
-                    <v-icon>fab fa-weibo</v-icon>
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-qq</v-icon>
                 </v-btn>
             
         </div>
@@ -166,14 +158,14 @@
         <div class="footer-content">
             
                 <span id="busuanzi_container_site_uv" style="display: none;"> 
-                    Total Visitors <span id="busuanzi_value_site_uv"></span>
+                    总访客量 <span id="busuanzi_value_site_uv"></span>
                 </span>
                 <br>
             
             <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a></span><br>
             <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
             <span>
-                &copy; 2015 - 2021 
+                &copy; 2020 - 2021 
                 Clindy
             </span>
         </div>
@@ -186,9 +178,9 @@
   <v-col cols="12" md="8" align-self="end">
     <div id="site-header">
       <div id="site-title">
-        <a href="/clindy/" rel="home">Clindy&#39;s Blog</a>
+        <a href="/" rel="home">Clindy&#39;s Blog</a>
       </div>
-      <div id="site-description">———— 一朵追风的云</div>
+      <div id="site-description">像风走了八千里，不问归期</div>
       <div id="mobile-menu" class="d-block d-md-none">
         <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-inner-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
         <div class="mobile-mini-menu">
@@ -206,13 +198,8 @@
           </v-btn>
           
             
-            <v-btn icon href="/clindy/archives/">
+            <v-btn icon href="/archives/">
               <v-icon>archive</v-icon>
-            </v-btn>
-          
-            
-            <v-btn icon href="/clindy/about/">
-              <v-icon>account_circle</v-icon>
             </v-btn>
           
         </div>
@@ -230,17 +217,17 @@
     <v-timeline class="timeline" dense>
         <v-timeline-item class="timeline-header" color="secondary lighten-2">
             <span class="timeline-title">Analysis</span>
-            <span class="timeline-subtitle">Tags</span>
+            <span class="timeline-subtitle">标签</span>
         </v-timeline-item>
         
             <v-timeline-item fill-dot small color="secondary lighten-2">
                 <div class="timeline-item-post d-none d-md-block">
                     <span class="timeline-item-time">2021.01.14</span>
-                    <a href="/clindy/2021/01/14/%E6%B5%81%E5%88%86%E6%9E%90/" class="timeline-item-title">流分析</a>
+                    <a href="/2021/01/14/%E6%B5%81%E5%88%86%E6%9E%90/" class="timeline-item-title">流分析</a>
                 </div>
                 <div class="timeline-item-post-mobile d-block d-md-none">
                     <span class="timeline-item-time">2021.01.14</span><br>
-                    <a href="/clindy/2021/01/14/%E6%B5%81%E5%88%86%E6%9E%90/" class="timeline-item-title">流分析</a>
+                    <a href="/2021/01/14/%E6%B5%81%E5%88%86%E6%9E%90/" class="timeline-item-title">流分析</a>
                 </div>
                 <v-divider></v-divider>
             </v-timeline-item>
@@ -253,7 +240,7 @@
                                 <v-divider></v-divider>
                                 <div id="mobile-footer-content">
                                     <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a> &nbsp; Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
-                                    <span> &copy; 2015 - 2021 Clindy</span>
+                                    <span> &copy; 2020 - 2021 Clindy</span>
                                 </div>
                             </div>                   
                         </v-col>                                            
@@ -268,7 +255,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-base64@3.5.2/base64.min.js"></script>
 
-<script src="/clindy/js/main.js"></script>
+<script src="/js/main.js"></script>
 
 
 
