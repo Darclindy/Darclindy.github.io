@@ -87,10 +87,18 @@
     <v-list id="main-menu" class="font-weight-bold" flat>
         
             
+            <v-list-item href="/classic/" link>
+            <v-list-item-icon><v-icon>account_circle</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                经典例题
+            </v-list-item-content>
+            </v-list-item>
+        
+            
             <v-list-item href="/archives/" link>
             <v-list-item-icon><v-icon>archive</v-icon></v-list-item-icon>
             <v-list-item-content>
-                Archives
+                时间线
             </v-list-item-content>
             </v-list-item>
         
@@ -101,7 +109,7 @@
             
                 
                     <v-list-item href="/categories/Game/" link>
-                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="7" >
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="8" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
                                     <span>Game</span>                              
@@ -124,11 +132,23 @@
                 
             
                 
-                    <v-list-item href="/categories/Analysis/" link>
+                    <v-list-item href="/categories/classic/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="2" >
+                            <v-hover v-model="menuHover">
+                                <v-list-item-content>
+                                    <span>classic</span>                              
+                                </v-list-item-content>                           
+                            </v-hover>
+                        </v-badge>
+                    </v-list-item>
+                
+            
+                
+                    <v-list-item href="/categories/Utils/" link>
                         <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
-                                    <span>Analysis</span>                              
+                                    <span>Utils</span>                              
                                 </v-list-item-content>                           
                             </v-hover>
                         </v-badge>
@@ -206,6 +226,11 @@
           </v-btn>
           
             
+            <v-btn icon href="/classic/">
+              <v-icon>account_circle</v-icon>
+            </v-btn>
+          
+            
             <v-btn icon href="/archives/">
               <v-icon>archive</v-icon>
             </v-btn>
@@ -229,7 +254,7 @@
         <v-row no-gutters>
           <v-col cols="auto">
             <div class="index-article-header-date font-weight-medium">
-              2021-01-14
+              2021-01-19
             </div>
           </v-col>
           <v-spacer></v-spacer>
@@ -239,7 +264,17 @@
                 
                   <span class="index-article-header-tag-content">
                     <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/Analysis/ >Analysis</a>
+                    <a rel="tag" href = /tags/CTF/ >CTF</a>
+                  </span>
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/pwn/ >pwn</a>
+                  </span>
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/Game/ >Game</a>
                   </span>
                 
               </v-card>
@@ -248,20 +283,207 @@
         </v-row>
         <span>
           
-            <a class="index-article-header-category font-weight-bold" href="/categories/Analysis/">Analysis></a>
+            <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2021/01/14/%E6%B5%81%E5%88%86%E6%9E%90/">流分析</a>
+        <a class="index-article-header-title font-weight-medium" href="/2021/01/19/Game/%E6%98%9FCTF/">2021 *CTF</a>
       </div>
       
       <div class="index-article-content">
         
-          流分析
+          *CTFbaby_heap2.27-3ubuntu1.3_amd64版本的库，按2.31的规则做即可。利用uaf改掉tcache_entry的key，即可实现double_free。堆块大小只能放fastbin，但是可以用后门函数malloc(0x400)，把fastbin放入smallbin，以此泄露libc基址。在smallbin上malloc几个小堆块实现堆块重叠，改free_hook...
         
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/2021/01/14/%E6%B5%81%E5%88%86%E6%9E%90/">Read More</v-btn>
+        <v-btn text href="/2021/01/19/Game/%E6%98%9FCTF/">Read More</v-btn>
+      </div>
+      <v-divider></v-divider>
+    </article> 
+  
+    <article class="index-article">
+      
+      <div class="index-article-header">
+        <v-row no-gutters>
+          <v-col cols="auto">
+            <div class="index-article-header-date font-weight-medium">
+              2021-01-16
+            </div>
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col cols="auto">
+            
+          </v-col>
+        </v-row>
+        <span>
+          
+            <a class="index-article-header-category font-weight-bold" href="/2021/01/16/Classic/%E7%9B%B2%E6%89%93/">Uncategorized></a>
+           
+        </span> 
+        <a class="index-article-header-title font-weight-medium" href="/2021/01/16/Classic/%E7%9B%B2%E6%89%93/"></a>
+      </div>
+      
+      <div class="index-article-content">
+        
+          Pwn 盲打的一般解决思路本文转自https://www.anquanke.com/post/id/196722#h3-2，写的实在太细了，膜拜一下大佬。
+0x01 写在前面最近出现了许多次Bilnd Pwn的题目，故在这里总结一些常见的思路。
+本文的部分内容引用了大佬的博客原文，已在文章末尾的参考链接中注明了原作者。
+0x02 前置知识程序的一般启动过程
+关于_start函数本部分内容均为...
+        
+      </div>
+      
+      <div class="index-article-readmore ">
+        <v-btn text href="/2021/01/16/Classic/%E7%9B%B2%E6%89%93/">Read More</v-btn>
+      </div>
+      <v-divider></v-divider>
+    </article> 
+  
+    <article class="index-article">
+      
+      <div class="index-article-header">
+        <v-row no-gutters>
+          <v-col cols="auto">
+            <div class="index-article-header-date font-weight-medium">
+              2021-01-15
+            </div>
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col cols="auto">
+            
+              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/pwn/ >pwn</a>
+                  </span>
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/tools/ >tools</a>
+                  </span>
+                
+              </v-card>
+            
+          </v-col>
+        </v-row>
+        <span>
+          
+            <a class="index-article-header-category font-weight-bold" href="/categories/Utils/">Utils></a>
+           
+        </span> 
+        <a class="index-article-header-title font-weight-medium" href="/2021/01/15/Utils/c-pwntools/">一些实用技巧整理</a>
+      </div>
+      
+      <div class="index-article-content">
+        
+          收录一些比较实用的小技巧，持续更新……
+栈溢出确定偏移1234&gt;&gt;&gt; cyclic(20)&#x27;aaaabaaacaaadaaaeaaa&#x27;&gt;&gt;&gt; cyclic_find(&quot;eaaa&quot;)16
+ROP模块123456789ROP(elf/libc)			#返回rop对象，快速构造ROP链rop.call(&lt;functi...
+        
+      </div>
+      
+      <div class="index-article-readmore ">
+        <v-btn text href="/2021/01/15/Utils/c-pwntools/">Read More</v-btn>
+      </div>
+      <v-divider></v-divider>
+    </article> 
+  
+    <article class="index-article">
+      
+      <div class="index-article-header">
+        <v-row no-gutters>
+          <v-col cols="auto">
+            <div class="index-article-header-date font-weight-medium">
+              2021-01-15
+            </div>
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col cols="auto">
+            
+              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/CTF/ >CTF</a>
+                  </span>
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/classic/ >classic</a>
+                  </span>
+                
+              </v-card>
+            
+          </v-col>
+        </v-row>
+        <span>
+          
+            <a class="index-article-header-category font-weight-bold" href="/categories/classic/">classic></a>
+           
+        </span> 
+        <a class="index-article-header-title font-weight-medium" href="/2021/01/15/brop/">HCTF2016 brop</a>
+      </div>
+      
+      <div class="index-article-content">
+        
+          HCTF2016 brop非常经典的题目。
+
+        
+      </div>
+      
+      <div class="index-article-readmore ">
+        <v-btn text href="/2021/01/15/brop/">Read More</v-btn>
+      </div>
+      <v-divider></v-divider>
+    </article> 
+  
+    <article class="index-article">
+      
+      <div class="index-article-header">
+        <v-row no-gutters>
+          <v-col cols="auto">
+            <div class="index-article-header-date font-weight-medium">
+              2021-01-15
+            </div>
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col cols="auto">
+            
+              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/CTF/ >CTF</a>
+                  </span>
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/classic/ >classic</a>
+                  </span>
+                
+              </v-card>
+            
+          </v-col>
+        </v-row>
+        <span>
+          
+            <a class="index-article-header-category font-weight-bold" href="/categories/classic/">classic></a>
+           
+        </span> 
+        <a class="index-article-header-title font-weight-medium" href="/2021/01/15/Classic/brop/">Blind ROP</a>
+      </div>
+      
+      <div class="index-article-content">
+        
+          Blind ROP这篇博客搬运了小蓝师傅的文章的部分内容（文章链接），旨在理清BROP的思路（基本是搬运）。之后再以HCTF2016的一道赛题brop为例，巩固一下成果。
+原理简述BROP攻击基于一篇发表在Oakland 2014的论文Hacking Blind，作者是来自Standford的Andrea Bittau，以下是相关paper和slide的链接：paper、slide。
+以及B...
+        
+      </div>
+      
+      <div class="index-article-readmore ">
+        <v-btn text href="/2021/01/15/Classic/brop/">Read More</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -299,7 +521,7 @@
             <a class="index-article-header-category font-weight-bold" href="/categories/CVE/">CVE></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2021/01/14/CVE-2018-1160/">CVE-2018-1160</a>
+        <a class="index-article-header-title font-weight-medium" href="/2021/01/14/CVE/CVE-2018-1160/">CVE-2018-1160</a>
       </div>
       
       <div class="index-article-content">
@@ -310,7 +532,7 @@
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/2021/01/14/CVE-2018-1160/">Read More</v-btn>
+        <v-btn text href="/2021/01/14/CVE/CVE-2018-1160/">Read More</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -353,7 +575,7 @@
             <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2021/01/11/%E5%8D%8E%E4%B8%BA%E4%BA%91pwn/">XCTF 华为三场</a>
+        <a class="index-article-header-title font-weight-medium" href="/2021/01/11/Game/%E5%8D%8E%E4%B8%BA/">XCTF 华为三场</a>
       </div>
       
       <div class="index-article-content">
@@ -365,7 +587,7 @@ cpp2.31保护全开的菜单堆。有两个功能，0是add，申请大小为0x8
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/2021/01/11/%E5%8D%8E%E4%B8%BA%E4%BA%91pwn/">Read More</v-btn>
+        <v-btn text href="/2021/01/11/Game/%E5%8D%8E%E4%B8%BA/">Read More</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -408,7 +630,7 @@ cpp2.31保护全开的菜单堆。有两个功能，0是add，申请大小为0x8
             <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2020/12/30/2020%20%E7%BA%B5%E6%A8%AA%E6%9D%AF/">2020 纵横杯</a>
+        <a class="index-article-header-title font-weight-medium" href="/2020/12/30/Game/2020%20%E7%BA%B5%E6%A8%AA%E6%9D%AF/">2020 纵横杯</a>
       </div>
       
       <div class="index-article-content">
@@ -420,7 +642,7 @@ wind_farm_panel2.23的库，无free，超长堆溢出，可以直接house of ora
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/2020/12/30/2020%20%E7%BA%B5%E6%A8%AA%E6%9D%AF/">Read More</v-btn>
+        <v-btn text href="/2020/12/30/Game/2020%20%E7%BA%B5%E6%A8%AA%E6%9D%AF/">Read More</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -463,7 +685,7 @@ wind_farm_panel2.23的库，无free，超长堆溢出，可以直接house of ora
             <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2020/11/22/%E7%A5%A5%E4%BA%91%E6%9D%AF/">2020 祥云杯</a>
+        <a class="index-article-header-title font-weight-medium" href="/2020/11/22/Game/%E7%A5%A5%E4%BA%91%E6%9D%AF/">2020 祥云杯</a>
       </div>
       
       <div class="index-article-content">
@@ -475,7 +697,7 @@ wind_farm_panel2.23的库，无free，超长堆溢出，可以直接house of ora
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/2020/11/22/%E7%A5%A5%E4%BA%91%E6%9D%AF/">Read More</v-btn>
+        <v-btn text href="/2020/11/22/Game/%E7%A5%A5%E4%BA%91%E6%9D%AF/">Read More</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -518,7 +740,7 @@ wind_farm_panel2.23的库，无free，超长堆溢出，可以直接house of ora
             <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2020/11/14/2020%20%E4%B8%8A%E6%B5%B7%E8%B5%9B/">2020 上海赛</a>
+        <a class="index-article-header-title font-weight-medium" href="/2020/11/14/Game/2020%20%E4%B8%8A%E6%B5%B7%E8%B5%9B/">2020 上海赛</a>
       </div>
       
       <div class="index-article-content">
@@ -536,193 +758,24 @@ show
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/2020/11/14/2020%20%E4%B8%8A%E6%B5%B7%E8%B5%9B/">Read More</v-btn>
-      </div>
-      <v-divider></v-divider>
-    </article> 
-  
-    <article class="index-article">
-      
-      <div class="index-article-header">
-        <v-row no-gutters>
-          <v-col cols="auto">
-            <div class="index-article-header-date font-weight-medium">
-              2020-11-03
-            </div>
-          </v-col>
-          <v-spacer></v-spacer>
-          <v-col cols="auto">
-            
-              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/CTF/ >CTF</a>
-                  </span>
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/pwn/ >pwn</a>
-                  </span>
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/Game/ >Game</a>
-                  </span>
-                
-              </v-card>
-            
-          </v-col>
-        </v-row>
-        <span>
-          
-            <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
-           
-        </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2020/11/03/%E6%B9%96%E6%B9%98%E6%9D%AF/">2020 湖湘杯</a>
-      </div>
-      
-      <div class="index-article-content">
-        
-          湖湘杯pwn_printf格式化字符串+ROP
-保护机制只开了NX，漏洞利用还是比较容易的。
-
-静态分析查看main函数，直接裂开。
-
-
-最下面的sub_40076c内部有一个栈溢出：
-
-这题给我的感觉，更像道逆向题，因为两个漏洞已经直接给我们了，保护机制也都没有开。但出题人利用格式化字符串的机制构建了一套自己的逻辑体系，解题时需要花费大量时间搞清楚程序的执行逻辑，只有弄明白前面一大段代码实...
-        
-      </div>
-      
-      <div class="index-article-readmore ">
-        <v-btn text href="/2020/11/03/%E6%B9%96%E6%B9%98%E6%9D%AF/">Read More</v-btn>
-      </div>
-      <v-divider></v-divider>
-    </article> 
-  
-    <article class="index-article">
-      
-      <div class="index-article-header">
-        <v-row no-gutters>
-          <v-col cols="auto">
-            <div class="index-article-header-date font-weight-medium">
-              2020-10-25
-            </div>
-          </v-col>
-          <v-spacer></v-spacer>
-          <v-col cols="auto">
-            
-              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/CTF/ >CTF</a>
-                  </span>
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/pwn/ >pwn</a>
-                  </span>
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/Game/ >Game</a>
-                  </span>
-                
-              </v-card>
-            
-          </v-col>
-        </v-row>
-        <span>
-          
-            <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
-           
-        </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2020/10/25/bytectf/">2020 ByteCTF</a>
-      </div>
-      
-      <div class="index-article-content">
-        
-          太难了，就写一道pwn吧。。
-gun保护机制全开，符号表损失，逆向难度增大，需要动态调试找回。
-有沙箱，只能orw。
-libc版本：2.31-0ubuntu9.1_amd64
-程序分析程序一开始会先让我们输name，共0x18字节，存在bss段中，之后会进入菜单。
-堆块的索引在全局变量上，由一个结构体数组保存着。结构体（之后统称子弹）的成员分别是：指向堆块的指针，指向结构体的指针，flag标...
-        
-      </div>
-      
-      <div class="index-article-readmore ">
-        <v-btn text href="/2020/10/25/bytectf/">Read More</v-btn>
-      </div>
-      <v-divider></v-divider>
-    </article> 
-  
-    <article class="index-article">
-      
-      <div class="index-article-header">
-        <v-row no-gutters>
-          <v-col cols="auto">
-            <div class="index-article-header-date font-weight-medium">
-              2020-10-11
-            </div>
-          </v-col>
-          <v-spacer></v-spacer>
-          <v-col cols="auto">
-            
-              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/CTF/ >CTF</a>
-                  </span>
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/pwn/ >pwn</a>
-                  </span>
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/Game/ >Game</a>
-                  </span>
-                
-              </v-card>
-            
-          </v-col>
-        </v-row>
-        <span>
-          
-            <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
-           
-        </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2020/10/11/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/">2020 西湖论剑</a>
-      </div>
-      
-      <div class="index-article-content">
-        
-          mmutag2020西湖论剑pwn1
-uaf，rop
-libc-2.23
-有canary，没开PIE，GOT表可写。
-程序分析输入name后会返回一个tag给我们，tag是栈上某局部变量的地址，有了它再配合动态调式便知道了栈中所有变量的内存。
-之后会列出一个菜单，1选项没什么用，进入2后又有一个菜单，主要操作都集中在这里：
-
-1 会malloc大小为0x68的堆，存在指定的全局指针数组中。
-...
-        
-      </div>
-      
-      <div class="index-article-readmore ">
-        <v-btn text href="/2020/10/11/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/">Read More</v-btn>
+        <v-btn text href="/2020/11/14/Game/2020%20%E4%B8%8A%E6%B5%B7%E8%B5%9B/">Read More</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
    
 </v-card>  
 
+
+  <div id="pagination" class="text-center">
+    <v-pagination 
+      v-model="currentPage" 
+      :length=2 
+      @input="PageChange" 
+      prev-icon="chevron_left"
+      next-icon="chevron_right"
+      color="secondary"
+    ></v-pagination>
+  </div>
          
                             <div id="mobile-footer" class="d-block d-md-none">
                                 <v-divider></v-divider>

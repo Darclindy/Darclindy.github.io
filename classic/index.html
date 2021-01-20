@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="shortcut icon" href="/img/favicon.ico">
+    
+     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.2.30/dist/vuetify.min.css" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+    
+
+
+
+
+
+
+
+    
+    
+          
+
+    
+    
+    
+    
+    <title>
+        
+            classic | Clindy&#39;s Blog
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-content id="page">
+                <v-container fluid>
+                    <v-row>
+                        <v-col cols="2" class="d-none d-md-block">
+                            <div id="sidebar" class="float-right">
+    <a href="/" rel="home">
+        <v-avatar size=96>
+            <img id="logo" src="/img/head.jpg">     
+        </v-avatar> 
+    </a>
+    <v-divider></v-divider>
+    <div class="mini-menu">
+        <v-btn icon href="/">
+            <v-icon>home</v-icon>
+        </v-btn>
+        <v-btn icon href="/categories/">
+            <v-icon>folder</v-icon>
+        </v-btn>
+        <v-btn icon href="/tags/">
+            <v-icon>bookmark</v-icon>
+        </v-btn>
+        <v-btn icon @click="SetNightMode">
+            <v-icon>{{ nightMode }}</v-icon>
+        </v-btn>
+    </div>
+    <v-list id="main-menu" class="font-weight-bold" flat>
+        
+            
+            <v-list-item href="/classic/" link>
+            <v-list-item-icon><v-icon>account_circle</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                经典例题
+            </v-list-item-content>
+            </v-list-item>
+        
+            
+            <v-list-item href="/archives/" link>
+            <v-list-item-icon><v-icon>archive</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                时间线
+            </v-list-item-content>
+            </v-list-item>
+        
+    </v-list>
+    <v-divider></v-divider>
+    
+        <v-list id="sub-menu" class="font-weight-medium" dense>
+            
+                
+                    <v-list-item href="/categories/Game/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="8" >
+                            <v-hover v-model="menuHover">
+                                <v-list-item-content>
+                                    <span>Game</span>                              
+                                </v-list-item-content>                           
+                            </v-hover>
+                        </v-badge>
+                    </v-list-item>
+                
+            
+                
+                    <v-list-item href="/categories/CVE/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
+                            <v-hover v-model="menuHover">
+                                <v-list-item-content>
+                                    <span>CVE</span>                              
+                                </v-list-item-content>                           
+                            </v-hover>
+                        </v-badge>
+                    </v-list-item>
+                
+            
+                
+                    <v-list-item href="/categories/classic/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="2" >
+                            <v-hover v-model="menuHover">
+                                <v-list-item-content>
+                                    <span>classic</span>                              
+                                </v-list-item-content>                           
+                            </v-hover>
+                        </v-badge>
+                    </v-list-item>
+                
+            
+                
+                    <v-list-item href="/categories/Utils/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
+                            <v-hover v-model="menuHover">
+                                <v-list-item-content>
+                                    <span>Utils</span>                              
+                                </v-list-item-content>                           
+                            </v-hover>
+                        </v-badge>
+                    </v-list-item>
+                
+            
+        </v-list>    
+    
+
+    <div id="footer">
+        <div class="footer-social">
+            
+                
+                <v-btn icon href="mailto:clindy.h@qq.com" target="_blank">
+                    <v-icon>fas fa-envelope</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://github.com/" target="_blank">
+                    <v-icon>fab fa-github</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-weibo</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-qq</v-icon>
+                </v-btn>
+            
+        </div>
+        <v-divider></v-divider>
+        <div class="footer-content">
+            
+                <span id="busuanzi_container_site_uv" style="display: none;"> 
+                    Total Visitors <span id="busuanzi_value_site_uv"></span>
+                </span>
+                <br>
+            
+            <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a></span><br>
+            <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+            <span>
+                &copy; 2020 - 2021 
+                Clindy
+            </span>
+        </div>
+    </div>
+</div>
+
+                        </v-col>
+                        <v-col cols="12" md="10">
+                            <v-row>
+  <v-col cols="12" md="8" align-self="end">
+    <div id="site-header">
+      <div id="site-title">
+        <a href="/" rel="home">Clindy&#39;s Blog</a>
+      </div>
+      <div id="site-description">像风走了八千里，不问归期</div>
+      <div id="mobile-menu" class="d-block d-md-none">
+        <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-inner-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
+        <div class="mobile-mini-menu">
+          <v-btn icon href="/">
+              <v-icon>home</v-icon>
+          </v-btn>
+          <v-btn icon href="/categories/">
+              <v-icon>folder</v-icon>
+          </v-btn>
+          <v-btn icon href="/tags/">
+              <v-icon>bookmark</v-icon>
+          </v-btn>
+          <v-btn icon @click="SetNightMode">
+              <v-icon>{{ nightMode }}</v-icon>
+          </v-btn>
+          
+            
+            <v-btn icon href="/classic/">
+              <v-icon>account_circle</v-icon>
+            </v-btn>
+          
+            
+            <v-btn icon href="/archives/">
+              <v-icon>archive</v-icon>
+            </v-btn>
+          
+        </div>
+      </div>    
+    </div>
+  </v-col>  
+  <v-col cols="4" align-self="end" class="d-none d-md-block">
+    <v-col align-self="end">
+      <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
+    </v-col> 
+  </v-col>
+</v-row>
+
+                            <v-card class="elevation-2 post-card">
+    <div class="post-header">
+        <a class="post-header-title font-weight-medium" href="/classic/index.html">classic</a>
+    </div>
+    <div class="post-content typo">
+        
+            <h1 id="经典赛题复现"><a href="#经典赛题复现" class="headerlink" title="经典赛题复现"></a>经典赛题复现</h1><p>ctf-all-in-one的第六章收录了近几年十分经典的赛题，并且有详细的解答和参考链接，简直宝藏。打算这个寒假把这些题都复现一下。<a href="/categories/classic/">点击查看</a></p>
+<ul>
+<li><input disabled="" type="checkbox"> 1  HCTF2016 brop6.1.1_pwn_hctf2016_brop.md</li>
+<li><input disabled="" type="checkbox"> 2  NJCTF2017 pingme</li>
+<li><input disabled="" type="checkbox"> 3  XDCTF2015 200</li>
+<li><input disabled="" type="checkbox"> 4  BackdoorCTF2017 Fun-Signals</li>
+<li><input disabled="" type="checkbox"> 5  GreHackCTF2017 beerfighter</li>
+<li><input disabled="" type="checkbox"> 6  DefconCTF2015 fuckup</li>
+<li><input disabled="" type="checkbox"> 7  0CTF2015 freenote</li>
+<li><input disabled="" type="checkbox"> 8  DCTF2017 Flex</li>
+<li><input disabled="" type="checkbox"> 9  RHme3 Exploitation</li>
+<li><input disabled="" type="checkbox"> 10  0CTF2017 BabyHeap2017</li>
+<li><input disabled="" type="checkbox"> 11  9447CTF2015 Search-Engine</li>
+<li><input disabled="" type="checkbox"> 12  N1CTF2018 vote</li>
+<li><input disabled="" type="checkbox"> 13  34C3CTF2017 readme_revenge</li>
+<li><input disabled="" type="checkbox"> 14  32C3CTF2015 readme</li>
+<li><input disabled="" type="checkbox"> 15  34C3CTF2017 SimpleGC</li>
+<li><input disabled="" type="checkbox"> 16  HITBCTF2017 1000levels</li>
+<li><input disabled="" type="checkbox"> 17  SECCONCTF2016 jmper</li>
+<li><input disabled="" type="checkbox"> 18  HITBCTF2017 Sentosa</li>
+<li><input disabled="" type="checkbox"> 19  HITBCTF2018 gundam</li>
+<li><input disabled="" type="checkbox"> 20  33C3CTF2016 babyfengshui</li>
+<li><input disabled="" type="checkbox"> 21  HITCONCTF2016 Secret_Holder</li>
+<li><input disabled="" type="checkbox"> 22  HITCONCTF2016 Sleepy_Holder</li>
+<li><input disabled="" type="checkbox"> 23  BCTF2016 bcloud</li>
+<li><input disabled="" type="checkbox"> 24  HITCONCTF2016 House_of_Orange</li>
+<li><input disabled="" type="checkbox"> 25  HCTF2017 babyprintf</li>
+<li><input disabled="" type="checkbox"> 26  34C3CTF2017 300</li>
+<li><input disabled="" type="checkbox"> 27  SECCONCTF2016 tinypad</li>
+<li><input disabled="" type="checkbox"> 28  ASISCTF2016 b00ks</li>
+<li><input disabled="" type="checkbox"> 29  Insomni’hack_teaserCTF2017 The_Great_Escape_part-3</li>
+<li><input disabled="" type="checkbox"> 30  HITCONCTF2017 Ghost_in_the_heap</li>
+<li><input disabled="" type="checkbox"> 31  HITBCTF2018 mutepig</li>
+<li><input disabled="" type="checkbox"> 32  SECCONCTF2017 vm_no_fun</li>
+<li><input disabled="" type="checkbox"> 33  34C3CTF2017 LFA</li>
+</ul>
+
+        
+    </div>
+</v-card>
+        
+                            <div id="mobile-footer" class="d-block d-md-none">
+                                <v-divider></v-divider>
+                                <div id="mobile-footer-content">
+                                    <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a> &nbsp; Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+                                    <span> &copy; 2020 - 2021 Clindy</span>
+                                </div>
+                            </div>                   
+                        </v-col>                                            
+                    </v-row>
+                </v-container>
+            </v-content>
+        </v-app>
+    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.2.30"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-base64@3.5.2/base64.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
