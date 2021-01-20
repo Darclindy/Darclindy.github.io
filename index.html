@@ -108,11 +108,11 @@
         <v-list id="sub-menu" class="font-weight-medium" dense>
             
                 
-                    <v-list-item href="/categories/Game/" link>
-                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="8" >
+                    <v-list-item href="/categories/classic/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
-                                    <span>Game</span>                              
+                                    <span>classic</span>                              
                                 </v-list-item-content>                           
                             </v-hover>
                         </v-badge>
@@ -120,11 +120,11 @@
                 
             
                 
-                    <v-list-item href="/categories/classic/" link>
-                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="2" >
+                    <v-list-item href="/categories/Game/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="8" >
                             <v-hover v-model="menuHover">
                                 <v-list-item-content>
-                                    <span>classic</span>                              
+                                    <span>Game</span>                              
                                 </v-list-item-content>                           
                             </v-hover>
                         </v-badge>
@@ -335,55 +335,6 @@ ROP模块123456789ROP(elf/libc)			#返回rop对象，快速构造ROP链rop.call(
       
       <div class="index-article-readmore ">
         <v-btn text href="/2021/01/15/Utils/c-pwntools/">Read More</v-btn>
-      </div>
-      <v-divider></v-divider>
-    </article> 
-  
-    <article class="index-article">
-      
-      <div class="index-article-header">
-        <v-row no-gutters>
-          <v-col cols="auto">
-            <div class="index-article-header-date font-weight-medium">
-              2021-01-15
-            </div>
-          </v-col>
-          <v-spacer></v-spacer>
-          <v-col cols="auto">
-            
-              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/CTF/ >CTF</a>
-                  </span>
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/classic/ >classic</a>
-                  </span>
-                
-              </v-card>
-            
-          </v-col>
-        </v-row>
-        <span>
-          
-            <a class="index-article-header-category font-weight-bold" href="/categories/classic/">classic></a>
-           
-        </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2021/01/15/brop/">HCTF2016 brop</a>
-      </div>
-      
-      <div class="index-article-content">
-        
-          HCTF2016 brop非常经典的题目。
-
-        
-      </div>
-      
-      <div class="index-article-readmore ">
-        <v-btn text href="/2021/01/15/brop/">Read More</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -784,20 +735,70 @@ libc版本：2.31-0ubuntu9.1_amd64
       </div>
       <v-divider></v-divider>
     </article> 
+  
+    <article class="index-article">
+      
+      <div class="index-article-header">
+        <v-row no-gutters>
+          <v-col cols="auto">
+            <div class="index-article-header-date font-weight-medium">
+              2020-10-11
+            </div>
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col cols="auto">
+            
+              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/CTF/ >CTF</a>
+                  </span>
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/pwn/ >pwn</a>
+                  </span>
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/Game/ >Game</a>
+                  </span>
+                
+              </v-card>
+            
+          </v-col>
+        </v-row>
+        <span>
+          
+            <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
+           
+        </span> 
+        <a class="index-article-header-title font-weight-medium" href="/2020/10/11/Game/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/">2020 西湖论剑</a>
+      </div>
+      
+      <div class="index-article-content">
+        
+          mmutag2020西湖论剑pwn1
+uaf，rop
+libc-2.23
+有canary，没开PIE，GOT表可写。
+程序分析输入name后会返回一个tag给我们，tag是栈上某局部变量的地址，有了它再配合动态调式便知道了栈中所有变量的内存。
+之后会列出一个菜单，1选项没什么用，进入2后又有一个菜单，主要操作都集中在这里：
+
+1 会malloc大小为0x68的堆，存在指定的全局指针数组中。
+...
+        
+      </div>
+      
+      <div class="index-article-readmore ">
+        <v-btn text href="/2020/10/11/Game/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/">Read More</v-btn>
+      </div>
+      <v-divider></v-divider>
+    </article> 
    
 </v-card>  
 
-
-  <div id="pagination" class="text-center">
-    <v-pagination 
-      v-model="currentPage" 
-      :length=2 
-      @input="PageChange" 
-      prev-icon="chevron_left"
-      next-icon="chevron_right"
-      color="secondary"
-    ></v-pagination>
-  </div>
          
                             <div id="mobile-footer" class="d-block d-md-none">
                                 <v-divider></v-divider>
