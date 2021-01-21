@@ -41,8 +41,8 @@
     
     
     <title>
-        
-            search | Clindy&#39;s Blog
+          
+            Clindy&#39;s Blog
         
     </title>
     
@@ -238,18 +238,29 @@
   </v-col>
 </v-row>
 
-                            <v-card class="elevation-2 post-card">
-    <div class="post-header">
-        <a class="post-header-title font-weight-medium" href="/search/index.html">Search</a>
-    </div>
-    <div class="post-content typo">
+                            <v-card class="elevation-2 index-card">
+    <v-timeline class="timeline" dense>
+        <v-timeline-item class="timeline-header" color="secondary lighten-2">
+            <span class="timeline-title">Soot</span>
+            <span class="timeline-subtitle">Tags</span>
+        </v-timeline-item>
         
-            <v-text-field label="Search" v-model="searchPageValue" prepend-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchPageValue,true)"></v-text-field>
-            <v-card class="elevation-0" id="search-result"></v-card>
+            <v-timeline-item fill-dot small color="secondary lighten-2">
+                <div class="timeline-item-post d-none d-md-block">
+                    <span class="timeline-item-time">2020.11.20</span>
+                    <a href="/2020/11/20/Analysis/soot/" class="timeline-item-title">Soot笔记</a>
+                </div>
+                <div class="timeline-item-post-mobile d-block d-md-none">
+                    <span class="timeline-item-time">2020.11.20</span><br>
+                    <a href="/2020/11/20/Analysis/soot/" class="timeline-item-title">Soot笔记</a>
+                </div>
+                <v-divider></v-divider>
+            </v-timeline-item>
         
-    </div>
+    </v-timeline>
 </v-card>
-        
+
+         
                             <div id="mobile-footer" class="d-block d-md-none">
                                 <v-divider></v-divider>
                                 <div id="mobile-footer-content">

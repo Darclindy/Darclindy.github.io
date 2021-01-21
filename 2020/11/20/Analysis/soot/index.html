@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <meta name="renderer" content="webkit"/>
+    <meta name="force-rendering" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
+    
+    
+        <link rel="shortcut icon" href="/img/favicon.ico">
+    
+     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.2.30/dist/vuetify.min.css" rel="stylesheet">
+    
+<link rel="stylesheet" href="/css/main.css">
+
+    
+    
+
+
+
+
+
+
+
+    
+    
+          
+
+    
+    
+    
+    
+    <title>
+        
+            Soot笔记 | Clindy&#39;s Blog
+        
+    </title>
+    
+    
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+    <div id="app">
+        <v-app>
+            <v-content id="page">
+                <v-container fluid>
+                    <v-row>
+                        <v-col cols="2" class="d-none d-md-block">
+                            <div id="sidebar" class="float-right">
+    <a href="/" rel="home">
+        <v-avatar size=96>
+            <img id="logo" src="/img/head.jpg">     
+        </v-avatar> 
+    </a>
+    <v-divider></v-divider>
+    <div class="mini-menu">
+        <v-btn icon href="/">
+            <v-icon>home</v-icon>
+        </v-btn>
+        <v-btn icon href="/categories/">
+            <v-icon>folder</v-icon>
+        </v-btn>
+        <v-btn icon href="/tags/">
+            <v-icon>bookmark</v-icon>
+        </v-btn>
+        <v-btn icon @click="SetNightMode">
+            <v-icon>{{ nightMode }}</v-icon>
+        </v-btn>
+    </div>
+    <v-list id="main-menu" class="font-weight-bold" flat>
+        
+            
+            <v-list-item href="/classic/" link>
+            <v-list-item-icon><v-icon>account_circle</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                经典例题
+            </v-list-item-content>
+            </v-list-item>
+        
+            
+            <v-list-item href="/archives/" link>
+            <v-list-item-icon><v-icon>archive</v-icon></v-list-item-icon>
+            <v-list-item-content>
+                时间线
+            </v-list-item-content>
+            </v-list-item>
+        
+    </v-list>
+    <v-divider></v-divider>
+    
+        <div class="post-toc">
+            <a href="/2020/11/20/Analysis/soot/" class="toc-header">Table of Contents</a>
+            <div class="toc-content">
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#soot"><span class="toc-number">1.</span> <span class="toc-text">soot</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#soot%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">soot基本数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Method-bodies"><span class="toc-number">1.2.1.</span> <span class="toc-text">Method bodies</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Statement"><span class="toc-number">1.2.2.</span> <span class="toc-text">Statement</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Value"><span class="toc-number">1.2.3.</span> <span class="toc-text">Value</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-number">1.2.4.</span> <span class="toc-text">References</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Intermediate-Representations-IR"><span class="toc-number">1.2.5.</span> <span class="toc-text">Intermediate Representations (IR)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8soot"><span class="toc-number">1.3.</span> <span class="toc-text">使用soot</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E6%A1%86%E6%9E%B6"><span class="toc-number">1.4.</span> <span class="toc-text">数据流框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E5%9B%BE"><span class="toc-number">1.5.</span> <span class="toc-text">函数调用图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8F%96%E6%8A%BD%E8%B1%A1%E7%9A%84%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.6.</span> <span class="toc-text">提取抽象的控制流程图</span></a></li></ol></li></ol>
+            </div>
+        </div>
+    
+
+    <div id="footer">
+        <div class="footer-social">
+            
+                
+                <v-btn icon href="mailto:clindy.h@qq.com" target="_blank">
+                    <v-icon>fas fa-envelope</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://github.com/" target="_blank">
+                    <v-icon>fab fa-github</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-weibo</v-icon>
+                </v-btn>
+            
+                
+                <v-btn icon href="https://baidu.com" target="_blank">
+                    <v-icon>fab fa-qq</v-icon>
+                </v-btn>
+            
+        </div>
+        <v-divider></v-divider>
+        <div class="footer-content">
+            
+                <span id="busuanzi_container_site_uv" style="display: none;"> 
+                    Total Visitors <span id="busuanzi_value_site_uv"></span>
+                </span>
+                <br>
+            
+            <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a></span><br>
+            <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+            <span>
+                &copy; 2020 - 2021 
+                Clindy
+            </span>
+        </div>
+    </div>
+</div>
+
+                        </v-col>
+                        <v-col cols="12" md="10">
+                            <v-row>
+  <v-col cols="12" md="8" align-self="end">
+    <div id="site-header">
+      <div id="site-title">
+        <a href="/" rel="home">Clindy&#39;s Blog</a>
+      </div>
+      <div id="site-description">像风走了八千里，不问归期</div>
+      <div id="mobile-menu" class="d-block d-md-none">
+        <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-inner-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
+        <div class="mobile-mini-menu">
+          <v-btn icon href="/">
+              <v-icon>home</v-icon>
+          </v-btn>
+          <v-btn icon href="/categories/">
+              <v-icon>folder</v-icon>
+          </v-btn>
+          <v-btn icon href="/tags/">
+              <v-icon>bookmark</v-icon>
+          </v-btn>
+          <v-btn icon @click="SetNightMode">
+              <v-icon>{{ nightMode }}</v-icon>
+          </v-btn>
+          
+            
+            <v-btn icon href="/classic/">
+              <v-icon>account_circle</v-icon>
+            </v-btn>
+          
+            
+            <v-btn icon href="/archives/">
+              <v-icon>archive</v-icon>
+            </v-btn>
+          
+        </div>
+      </div>    
+    </div>
+  </v-col>  
+  <v-col cols="4" align-self="end" class="d-none d-md-block">
+    <v-col align-self="end">
+      <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
+    </v-col> 
+  </v-col>
+</v-row>
+
+                            <v-card class="elevation-2 post-card">
+    
+    
+        <div class="post-header">
+  <a class="post-header-title font-weight-medium" href="/2020/11/20/Analysis/soot/">Soot笔记</a>
+  <div class="post-header-meta">   
+    <span>
+      <v-icon color="">event</v-icon>
+      Posted on:&nbsp;2020-11-20
+    </span>
+    <span>
+      <v-icon color="">event_available</v-icon>
+      Edited on:&nbsp;2021-01-20
+    </span>
+    <span>
+      <v-icon color="">folder</v-icon>
+      In:&nbsp;<a class="category-link" href="/categories/Analysis/">Analysis</a>
+    </span>
+    
+    <span>
+      <v-icon color="">visibility</v-icon>
+      Views:&nbsp;<span id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv"></span></span>
+    </span>
+    
+  </div>
+</div>
+
+    
+    
+    
+    
+    <div class="post-content typo">
+        <h1 id="soot"><a href="#soot" class="headerlink" title="soot"></a>soot</h1><p>soot是麦吉尔大学Sable研究小组的一个产品，该小组的目标是提供工具，帮助人们更好地理解和更快地执行Java程序。</p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul>
+<li><p><strong>Scene</strong>类表示分析发生的完整环境。通过它可以设置应用程序类(提供给Soot用于分析的类)、main类(包含main方法的类)、提取<strong>过程间分析</strong>的信息(例如，指向信息和调用图)。</p>
+</li>
+<li><p><strong>SootClass</strong>类表示加载到Soot或使用Soot创建的单个类。</p>
+</li>
+<li><p><strong>SootMethod</strong>表示类的单个方法</p>
+</li>
+<li><p><strong>SootField</strong>表示类的成员字段</p>
+</li>
+<li><p><strong>Body</strong>表示一个方法体（Method Body），有不同的风格，对应于不同的IR(例如，JimpleBody）</p>
+</li>
+</ul>
+<p>这些数据结构是使用面向对象的技术实现的，并且设计得易于使用和尽可能通用。</p>
+<h2 id="soot基本数据结构"><a href="#soot基本数据结构" class="headerlink" title="soot基本数据结构"></a>soot基本数据结构</h2><p>在本节中，我们描述了在Soot使用过程中通常要用的基本对象。</p>
+<h3 id="Method-bodies"><a href="#Method-bodies" class="headerlink" title="Method bodies"></a>Method bodies</h3><p>soot的<strong>Body</strong>类对应的是Java的一个函数体，Graph、Flow的构建都是基于Body进行分析。soot提供了4中不同的中间语言，分别用不同的body表示，分别为：BafBody,JimpleBody,ShimpleBody, GrimpBody。soot主要是基于Jimple进行分析，在流程中构建的是JimpleBody,其它的Body的构建需要通过开关来控制。</p>
+<p>我们可以使用Body类来访问各种信息，比如：</p>
+<ol>
+<li><p> getLocals() 检索局部变量的声明</p>
+</li>
+<li><p>getUnits() 检索组成Body的语句</p>
+</li>
+<li><p>getTraps() 检索Body中所有异常处理句柄</p>
+</li>
+</ol>
+<h3 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h3><p>Soot中的<strong>Unit</strong>接口表示语句（Statement），不同的IR有不同的实现（例如Jimple使用Stmt，而Grimp使用Inst）</p>
+<ul>
+<li><p>getUseBoxes() 检索value</p>
+</li>
+<li><p>getDefBoxes() 检索define</p>
+</li>
+<li><p>getUseAndDefBoxes() 同时检索define和value</p>
+</li>
+<li><p>getBoxesPointingToThis() 检索指向该statement的statement</p>
+</li>
+<li><p>getUnitBoxes() 检索该statement指向的Statement</p>
+</li>
+</ul>
+<p>Unit同样也提供了各种方法查找分支状况，例如fallsThrough和branches。</p>
+<p>下图是stmt的示意图，包括Jimple语句的格式和Statement之间的调用。</p>
+<img src="soot/20190926151703843.png" alt="img" style="zoom: 80%;" />
+
+
+
+<h3 id="Value"><a href="#Value" class="headerlink" title="Value"></a>Value</h3><p>soot中<strong>Values</strong>代表一个变量，</p>
+<ul>
+<li>Local 局部变量</li>
+<li>Jimple.Constant 常量</li>
+<li>Jimple.Expr 表达式</li>
+<li>…………</li>
+</ul>
+<p>一个表达式会有多种实现，比如BinopExpr和InvokeExpr，但总来说他们都可以被视为对一个或多个值执行某个操作并返回一个值。</p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p>soot中的<strong>box</strong>代表引用，提供了一个间接访问soot (Unit,Value)的入口，类似于Java的一个引用，当Unit包含另一个Unit的时候，需要通过Box来访问，Soot 里提供了两种类型的Box, 一个是ValueBox一个是UnitBox</p>
+<ul>
+<li><p><strong>UnitBoxes</strong>：refer to Units，分支中一个Unit有多个后继时使用。一个UnixBox包含着一个Unit操作，一个Unit的操作会包含着多个UnitBox（有些类型的Unit会包含其他Unit的引用,那么这时候就需要包含Unixbox），比如说，GotoStmt 需要知道目标的Unit是什么，所以一个Unit会包含其它的UnitBox，通过 UnitBox获取下一个Unit</p>
+</li>
+<li><p><strong>ValueBoxes</strong>：与Unit类似，我们通常也需要指向Value的box。这被表示为ValueBox类。对于一个Unit,我们能够得到一系列的ValueBox ,包含了在Unit中<strong>使用的值</strong>以及<strong>定义的值</strong>, 一个Valuebox对应这一个Value，而一个value可以对应多个ValueBox</p>
+</li>
+</ul>
+<p>下图的i0&lt;0的表达式就是包含一个valuebox, conditionexprbox，里面包含着LtExpr的value，而LtExpr又包含这op1Box左边和op2Box右边两个ValueBox, op1Box的valuebox又包含着i0这个local的本地value, 以及op2Box的ValueBox又包含着0这个常量Value</p>
+<p><img src="soot/20190926151730471.png" alt="img"></p>
+<h3 id="Intermediate-Representations-IR"><a href="#Intermediate-Representations-IR" class="headerlink" title="Intermediate Representations (IR)"></a>Intermediate Representations (IR)</h3><p>soot提供了4种不同的IR（中间表示），每种IR都有不同的抽象级别，它们分别是：Baf，Grimp，Jimple，Shimple。</p>
+<blockquote>
+<p>Baf:一种简化的字节码表示，操作起来很简单。</p>
+<p>Jimple:一种有类型的、3地址的、基于语句的中间表示</p>
+<p>Shimple: Jimple的SSA变体。</p>
+<p>Grimp:适合反编译和代码检查的Jimple聚合版本。</p>
+</blockquote>
+<p>其中Jimple是Soot的核心，是四种IR中最重要的。Soot能直接创建Jimple码，也可由Java sourcecode或者bytecode转化翻译而来。这里主要介绍Jimple的使用方法。</p>
+<p>可以在Soot中直接创建Jimple表示，也可以基于Java源代码和java字节码或类文件。</p>
+<p>java字节码会先转换为无类型的Jimple，通过为隐式堆栈位置引入新的局部变量，并使用Subroutine elimination来删除jsr指令。无类型的Jimple和添加的中的局部变量的类型被推断出来。Jimple代码会清除多余的代码，如未使用的变量或赋值。转换到Jimple的一个重要步骤是对表达式进行线性化(和命名)，这样语句最多只引用3个局部变量或常量。从而为执行优化提供更常规和非常方便的表示。在Jimple中，一个分析只需要处理Jimple表示中的15条语句，而Java字节码中可能有200多条指令。</p>
+<h2 id="使用soot"><a href="#使用soot" class="headerlink" title="使用soot"></a>使用soot</h2><h2 id="数据流框架"><a href="#数据流框架" class="headerlink" title="数据流框架"></a>数据流框架</h2><h2 id="函数调用图"><a href="#函数调用图" class="headerlink" title="函数调用图"></a>函数调用图</h2><h2 id="提取抽象的控制流程图"><a href="#提取抽象的控制流程图" class="headerlink" title="提取抽象的控制流程图"></a>提取抽象的控制流程图</h2>
+    </div>
+    <!--文末结束语-->
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;"> --- 本文结束 <i class="fas fa-heart"></i> The End --- </div>
+    
+    <!--页脚广告-->
+    
+    <v-divider></v-divider>
+    
+    <div class="post-nav">             
+        
+            <div class="post-nav-button float-left">
+                <v-icon>chevron_left</v-icon>
+                <a class="font-weight-bold text-left" href="/2020/11/22/Game/%E7%A5%A5%E4%BA%91%E6%9D%AF/">
+                    2020 祥云杯
+                </a>
+            </div>
+              
+          
+            <div class="post-nav-button float-right">
+                <a class="font-weight-bold text-right" href="/2020/11/14/Game/2020%20%E4%B8%8A%E6%B5%B7%E8%B5%9B/">      
+                    2020 上海赛
+                </a>
+                <v-icon>chevron_right</v-icon>
+            </div>
+        
+    </div>
+</v-card>
+
+
+
+        
+                            <div id="mobile-footer" class="d-block d-md-none">
+                                <v-divider></v-divider>
+                                <div id="mobile-footer-content">
+                                    <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a> &nbsp; Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
+                                    <span> &copy; 2020 - 2021 Clindy</span>
+                                </div>
+                            </div>                   
+                        </v-col>                                            
+                    </v-row>
+                </v-container>
+            </v-content>
+        </v-app>
+    </div>
+    
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdn.jsdelivr.net/npm/vuetify@2.2.30"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-base64@3.5.2/base64.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+
+
+
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@8.4.8/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({
+        startOnLoad: true,
+        theme: "default"
+    });</script>
+
+
+
+
+
+</body>
+</html>

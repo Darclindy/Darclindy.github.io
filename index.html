@@ -143,6 +143,18 @@
                     </v-list-item>
                 
             
+                
+                    <v-list-item href="/categories/Analysis/" link>
+                        <v-badge :value="menuHover" transition="slide-y-transition" inline content="1" >
+                            <v-hover v-model="menuHover">
+                                <v-list-item-content>
+                                    <span>Analysis</span>                              
+                                </v-list-item-content>                           
+                            </v-hover>
+                        </v-badge>
+                    </v-list-item>
+                
+            
         </v-list>    
     
 
@@ -322,7 +334,7 @@
             <a class="index-article-header-category font-weight-bold" href="/categories/Utils/">Utils></a>
            
         </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2021/01/15/Utils/c-pwntools/">一些实用技巧整理</a>
+        <a class="index-article-header-title font-weight-medium" href="/2021/01/15/Utils/pwntools/">一些实用技巧整理</a>
       </div>
       
       <div class="index-article-content">
@@ -334,7 +346,7 @@ ROP模块123456789ROP(elf/libc)			#返回rop对象，快速构造ROP链rop.call(
       </div>
       
       <div class="index-article-readmore ">
-        <v-btn text href="/2021/01/15/Utils/c-pwntools/">Read More</v-btn>
+        <v-btn text href="/2021/01/15/Utils/pwntools/">Read More</v-btn>
       </div>
       <v-divider></v-divider>
     </article> 
@@ -560,6 +572,60 @@ wind_farm_panel2.23的库，无free，超长堆溢出，可以直接house of ora
         <v-row no-gutters>
           <v-col cols="auto">
             <div class="index-article-header-date font-weight-medium">
+              2020-11-20
+            </div>
+          </v-col>
+          <v-spacer></v-spacer>
+          <v-col cols="auto">
+            
+              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/Soot/ >Soot</a>
+                  </span>
+                
+                  <span class="index-article-header-tag-content">
+                    <v-icon>fas fa-tag</v-icon>
+                    <a rel="tag" href = /tags/%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90/ >静态分析</a>
+                  </span>
+                
+              </v-card>
+            
+          </v-col>
+        </v-row>
+        <span>
+          
+            <a class="index-article-header-category font-weight-bold" href="/categories/Analysis/">Analysis></a>
+           
+        </span> 
+        <a class="index-article-header-title font-weight-medium" href="/2020/11/20/Analysis/soot/">Soot笔记</a>
+      </div>
+      
+      <div class="index-article-content">
+        
+          sootsoot是麦吉尔大学Sable研究小组的一个产品，该小组的目标是提供工具，帮助人们更好地理解和更快地执行Java程序。
+数据结构
+Scene类表示分析发生的完整环境。通过它可以设置应用程序类(提供给Soot用于分析的类)、main类(包含main方法的类)、提取过程间分析的信息(例如，指向信息和调用图)。
+
+SootClass类表示加载到Soot或使用Soot创建的单个类。
+
+Soo...
+        
+      </div>
+      
+      <div class="index-article-readmore ">
+        <v-btn text href="/2020/11/20/Analysis/soot/">Read More</v-btn>
+      </div>
+      <v-divider></v-divider>
+    </article> 
+  
+    <article class="index-article">
+      
+      <div class="index-article-header">
+        <v-row no-gutters>
+          <v-col cols="auto">
+            <div class="index-article-header-date font-weight-medium">
               2020-11-14
             </div>
           </v-col>
@@ -735,70 +801,20 @@ libc版本：2.31-0ubuntu9.1_amd64
       </div>
       <v-divider></v-divider>
     </article> 
-  
-    <article class="index-article">
-      
-      <div class="index-article-header">
-        <v-row no-gutters>
-          <v-col cols="auto">
-            <div class="index-article-header-date font-weight-medium">
-              2020-10-11
-            </div>
-          </v-col>
-          <v-spacer></v-spacer>
-          <v-col cols="auto">
-            
-              <v-card flat color="secondary" tile class="index-article-header-tag  font-weight-medium">
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/CTF/ >CTF</a>
-                  </span>
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/pwn/ >pwn</a>
-                  </span>
-                
-                  <span class="index-article-header-tag-content">
-                    <v-icon>fas fa-tag</v-icon>
-                    <a rel="tag" href = /tags/Game/ >Game</a>
-                  </span>
-                
-              </v-card>
-            
-          </v-col>
-        </v-row>
-        <span>
-          
-            <a class="index-article-header-category font-weight-bold" href="/categories/Game/">Game></a>
-           
-        </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2020/10/11/Game/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/">2020 西湖论剑</a>
-      </div>
-      
-      <div class="index-article-content">
-        
-          mmutag2020西湖论剑pwn1
-uaf，rop
-libc-2.23
-有canary，没开PIE，GOT表可写。
-程序分析输入name后会返回一个tag给我们，tag是栈上某局部变量的地址，有了它再配合动态调式便知道了栈中所有变量的内存。
-之后会列出一个菜单，1选项没什么用，进入2后又有一个菜单，主要操作都集中在这里：
-
-1 会malloc大小为0x68的堆，存在指定的全局指针数组中。
-...
-        
-      </div>
-      
-      <div class="index-article-readmore ">
-        <v-btn text href="/2020/10/11/Game/%E8%A5%BF%E6%B9%96%E8%AE%BA%E5%89%91/">Read More</v-btn>
-      </div>
-      <v-divider></v-divider>
-    </article> 
    
 </v-card>  
 
+
+  <div id="pagination" class="text-center">
+    <v-pagination 
+      v-model="currentPage" 
+      :length=2 
+      @input="PageChange" 
+      prev-icon="chevron_left"
+      next-icon="chevron_right"
+      color="secondary"
+    ></v-pagination>
+  </div>
          
                             <div id="mobile-footer" class="d-block d-md-none">
                                 <v-divider></v-divider>
